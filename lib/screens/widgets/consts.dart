@@ -29,12 +29,7 @@ const kContinueWithGoogleButton = Color(0XFF9E2121);
 
 const kBackgroundColor = Color(0XFFE3E6EF);
 
-const kBlueAccent = Colors.blueAccent;
-
-const kHomePagePropertyTitle = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 18,
-);
+const kHomePageTitle = TextStyle(fontSize: 30, color: kThemeBlueColor, fontWeight: FontWeight.w500);
 
 const kRegularText = TextStyle(
   fontWeight: FontWeight.normal,

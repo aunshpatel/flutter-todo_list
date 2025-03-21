@@ -39,20 +39,17 @@ class _HomePageState extends State<HomePage> {
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text("Welcome to The Todo List", style: TextStyle(fontSize: 30, color: kDarkTextColor),),
-                          ],
-                        ),
-                      )
-                    ),
+                    Center(
+                      child: Wrap(
+                        children: [
+                          Text("Welcome to", style: kHomePageTitle),
+                          Text("The Todo List", style: kHomePageTitle),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
