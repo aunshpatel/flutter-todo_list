@@ -3,9 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences prefs;
 
-String apiLinkConstant = 'https://realestate-vgcw.onrender.com/api';
+String apiLinkConstant = 'https://the-todo-list.onrender.com/api';
 
-String currentUserID = '', token = '', jwtSecret = 'realestate-project', newUsername = '', newEmail = '', newPassword = '', newProfilePic = '', currentListingID = '', profileUpdateError = '';
+String currentUserID = '', token = '', jwtSecret = 'todolist-project', newUsername = '', newEmail = '', newPassword = '', newProfilePic = '', currentListingID = '', profileUpdateError = '';
 
 var listingWithDiscount = [], listingForRent = [], listingForSale = [];
 
