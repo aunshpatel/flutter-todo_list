@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Center(
-                      child: Wrap(
+                      child: Column(
                         children: [
                           Text("Welcome to", style: kHomePageTitle),
                           Text("The Todo List", style: kHomePageTitle),
