@@ -42,13 +42,24 @@ class _AboutPageState extends State<AboutPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Column(
-                    children: [
-                      Text("Welcome to", style: kHomePageTitle),
-                      Text("The Todo List", style: kHomePageTitle),
-                    ],
-                  ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("About The Todo List", style: kHomePageTitle),
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: Text("The Todo List is a leading application that specializes in helping its users to add, update and delete various daily tasks and ease their lives.", style: kLightRegularTextStyle),
+                        )
+                      ],
+                    ),
+                  ],
                 )
               ],
             ),

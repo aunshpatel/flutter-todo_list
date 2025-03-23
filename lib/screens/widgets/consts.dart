@@ -29,16 +29,8 @@ const kContinueWithGoogleButton = Color(0XFF9E2121);
 
 const kBackgroundColor = Color(0XFFE3E6EF);
 
-const kHomePageTitle = TextStyle(fontSize: 30, color: kThemeBlueColor, fontWeight: FontWeight.w500);
-
 const kRegularText = TextStyle(
   fontWeight: FontWeight.normal,
-  fontSize: 15,
-);
-
-const kRegularRedText = TextStyle(
-  fontWeight: FontWeight.normal,
-  color: kContinueWithGoogleButton,
   fontSize: 15,
 );
 
@@ -54,10 +46,31 @@ const kRegularSemiBoldText = TextStyle(
 
 const kSize18RegularText = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
 
+const kRegularTextStrike = TextStyle(
+  fontWeight: FontWeight.normal,
+  decoration: TextDecoration.lineThrough,
+  fontSize: 15,
+);
+
+const kSemiBoldSize16Style = TextStyle(
+    fontSize: 16,
+    fontWeight:FontWeight.w500
+);
+
+//coloured text details
+
+const kHomePageTitle = TextStyle(fontSize: 30, color: kThemeBlueColor, fontWeight: FontWeight.w500);
+
 const kWhiteBoldRegularText = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 15,
     color: Colors.white
+);
+
+const kRegularRedText = TextStyle(
+  fontWeight: FontWeight.normal,
+  color: kContinueWithGoogleButton,
+  fontSize: 15,
 );
 
 const kRedBoldRegularText = TextStyle(
@@ -66,34 +79,16 @@ const kRedBoldRegularText = TextStyle(
     color: kRedColor
 );
 
+const kSideMenuBlueSize16Style = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 16,
+  color: kThemeBlueColor,
+);
+
 const kGreenBoldRegularText = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 16,
     color: Colors.green
-);
-
-const kRegularTextStrike = TextStyle(
-  fontWeight: FontWeight.normal,
-  decoration: TextDecoration.lineThrough,
-  fontSize: 15,
-);
-
-const kSideMenuLightTextStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 20,
-  color: kLightTitleColor,
-);
-
-const kWhiteText20Size = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 20,
-  color: kWhiteColor,
-);
-
-const kSideMenuWhiteTextStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 20,
-  color: kWhiteColor,
 );
 
 const kSideMenuWhiteSize16Style = TextStyle(
@@ -102,16 +97,35 @@ const kSideMenuWhiteSize16Style = TextStyle(
   color: kWhiteColor,
 );
 
-const kSideMenuBlueTextStyle = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 20,
-  color: kThemeBlueColor,
+const kLightSemiBoldTextStyle = TextStyle(
+    color: kLightTitleColor,
+    fontSize: 16,
+    fontWeight:FontWeight.w500
 );
 
-const kSideMenuBlueSize16Style = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 16,
-  color: kThemeBlueColor,
+const kDarkSemiBoldTextStyle = TextStyle(
+    color: kDarkTitleColor,
+    fontSize: 16,
+    fontWeight:FontWeight.w500
+);
+
+const kUnderlineDarkSemiBoldTextStyle = TextStyle(
+    color: kDarkTitleColor,
+    decoration: TextDecoration.underline,
+    fontSize: 16,
+    fontWeight:FontWeight.w500
+);
+
+const kListingInputDecorationStyle = TextStyle(
+    color: kThemeBlueColor,
+    fontSize: 17,
+    fontWeight:FontWeight.w500
+);
+
+const kLightRegularTextStyle = TextStyle(
+  fontWeight: FontWeight.w500,
+  fontSize: 18,
+  color: kLightTitleColor,
 );
 
 const kLightBoldTextStyle = TextStyle(
@@ -132,34 +146,28 @@ const kDarkBoldTextStyle = TextStyle(
   color: kDarkTitleColor,
 );
 
-const kLightSemiBoldTextStyle = TextStyle(
-    color: kLightTitleColor,
-    fontSize: 16,
-    fontWeight:FontWeight.w500
+const kSideMenuLightTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+  color: kLightTitleColor,
 );
 
-const kListingInputDecorationStyle = TextStyle(
-    color: kThemeBlueColor,
-    fontSize: 17,
-    fontWeight:FontWeight.w500
+const kWhiteText20Size = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+  color: kWhiteColor,
 );
 
-const kSemiBoldSize16Style = TextStyle(
-    fontSize: 16,
-    fontWeight:FontWeight.w500
+const kSideMenuWhiteTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+  color: kWhiteColor,
 );
 
-const kDarkSemiBoldTextStyle = TextStyle(
-    color: kDarkTitleColor,
-    fontSize: 16,
-    fontWeight:FontWeight.w500
-);
-
-const kUnderlineDarkSemiBoldTextStyle = TextStyle(
-    color: kDarkTitleColor,
-    decoration: TextDecoration.underline,
-    fontSize: 16,
-    fontWeight:FontWeight.w500
+const kSideMenuBlueTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+  color: kThemeBlueColor,
 );
 
 const kBorder = OutlineInputBorder(
