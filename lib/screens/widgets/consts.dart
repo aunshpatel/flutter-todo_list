@@ -90,6 +90,18 @@ const kWhiteText20Size = TextStyle(
   color: kWhiteColor,
 );
 
+const kSideMenuWhiteTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+  color: kWhiteColor,
+);
+
+const kSideMenuWhiteSize16Style = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 16,
+  color: kWhiteColor,
+);
+
 const kSideMenuBlueTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20,
