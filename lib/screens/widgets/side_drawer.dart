@@ -20,9 +20,16 @@ class _SideDrawerState extends State<SideDrawer> {
           child: ListView(
             children: [
               //Image
-              SizedBox(
-                  height: 200,
-                  child: Image.asset('assets/images/todo-list-white-transparent-bg.png')
+              Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                height: 200,
+                child: Image.asset('assets/images/todo-list-white-transparent-bg.png')
               ),
               //Home Screen
               Container(
