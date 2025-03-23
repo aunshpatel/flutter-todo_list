@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_list/screens/about_page.dart';
 import 'package:todo_list/screens/home_page.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: kThemeBlueColor,
         ),
         '/home_page':(context) => const HomePage(),
+        '/about_us':(context) => const AboutPage(),
       },
     );
   }

@@ -47,7 +47,23 @@ class _SideDrawerState extends State<SideDrawer> {
                   },
                 ),
               ),
-              //Privacy Policy
+              //About Us Screen
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: kWhiteColor,
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  title: Text('About Us', style:kSideMenuWhiteTextStyle),
+                  onTap: (){
+                    Navigator.pushNamed(context, '/about_us');
+                  },
+                ),
+              ),
+              //Privacy Policy & Contact Us
               Container(
                 decoration: const BoxDecoration(
                   border: Border(
