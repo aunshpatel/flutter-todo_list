@@ -27,11 +27,11 @@ class _SideDrawerState extends State<SideDrawer> {
               //Home Screen
               Container(
                 decoration: const BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                          color: kBlackColor,
-                        )
-                    )
+                  border: Border(
+                    bottom: BorderSide(
+                      color: kWhiteColor,
+                    ),
+                  ),
                 ),
                 child: ListTile(
                   title: Text('Home Screen', style:kSideMenuWhiteTextStyle),
@@ -45,9 +45,9 @@ class _SideDrawerState extends State<SideDrawer> {
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: kBlackColor,
+                      color: kWhiteColor,
                     ),
-                  )
+                  ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
