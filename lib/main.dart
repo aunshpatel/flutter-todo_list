@@ -12,20 +12,6 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
- /* Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'The Todo List',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(0, 227, 231, 239)),
-        useMaterial3: false,
-      ),
-      initialRoute: '/home_page',
-      routes: {
-        '/home_page':(context) => const HomePage(),
-      },
-    );
-  }*/
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
