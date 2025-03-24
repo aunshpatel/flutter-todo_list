@@ -5,7 +5,7 @@ late SharedPreferences prefs;
 
 String apiLinkConstant = 'https://the-todo-list.onrender.com/api';
 
-String currentUserID = '', token = '', jwtSecret = 'todolist-project', newUsername = '', newEmail = '', newPassword = '', newProfilePic = '', currentListingID = '', profileUpdateError = '';
+String currentUserID = '', token = '', jwtSecret = 'todolist-project', newUsername = '', newEmail = '', newPassword = '', newProfilePic = '', currentTodoID = '', profileUpdateError = '';
 
 var listingWithDiscount = [], listingForRent = [], listingForSale = [];
 
