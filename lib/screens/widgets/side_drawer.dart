@@ -63,6 +63,22 @@ class _SideDrawerState extends State<SideDrawer> {
                   },
                 ),
               ),
+              //About Us Screen
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: kWhiteColor,
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  title: Text('Registration', style:kSideMenuWhiteTextStyle),
+                  onTap: (){
+                    Navigator.pushNamed(context, '/registration_page');
+                  },
+                ),
+              ),
               //Privacy Policy & Contact Us
               Container(
                 decoration: const BoxDecoration(

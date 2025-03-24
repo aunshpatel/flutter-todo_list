@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/screens/about_page.dart';
 import 'package:todo_list/screens/home_page.dart';
+import 'package:todo_list/screens/registration_screen.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home_page':(context) => const HomePage(),
         '/about_us':(context) => const AboutPage(),
+        '/registration_page':(context) => RegistrationScreen(),
       },
     );
   }
