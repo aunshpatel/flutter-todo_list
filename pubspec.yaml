@@ -38,6 +38,8 @@ dependencies:
   shared_preferences: ^2.5.2
   flutter_native_splash: ^2.4.5
 
+  # whenever flutter clean is used, type flutter pub run flutter_native_splash:create in terminal so that the splash page is always created
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
