@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../blocs/registration/registration_bloc.dart';
+import '../repositories/auth_repository.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
@@ -189,7 +193,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  /*Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       child: Scaffold(
@@ -421,6 +425,221 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           ),
         ),
         resizeToAvoidBottomInset: true,
+      ),
+    );
+  }*/
+
+ /* Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => RegistrationBloc(authRepository: AuthRepository()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Register'),
+        ),
+        body: BlocListener<RegistrationBloc, RegistrationState>(
+          listener: (context, state) {
+            if (state is RegistrationLoading) {
+              // Show loading indicator
+            } else if (state is RegistrationSuccess) {
+              // Show success message
+            } else if (state is RegistrationFailure) {
+              // Show error message
+            }
+          },
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                TextField(controller: usernameController, decoration: InputDecoration(labelText: 'Username')),
+                TextField(controller: fullnameController, decoration: InputDecoration(labelText: 'Full Name')),
+                TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email')),
+                TextField(controller: passwordController, decoration: InputDecoration(labelText: 'Password')),
+                TextField(controller: confirmPasswordController, decoration: InputDecoration(labelText: 'Confirm Password')),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<RegistrationBloc>().add(
+                      RegisterUserEvent(
+                        username: usernameController.text,
+                        fullName: fullnameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                      ),
+                    );
+                  },
+                  child: Text('Register'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }*/
+
+  /*Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Registration')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: BlocBuilder<RegistrationBloc, RegistrationState>(
+          builder: (context, state) {
+            if (state is RegistrationLoading) {
+              return Center(
+                child: CircularProgressIndicator(),  // Show a loading spinner
+              );
+            }
+
+            if (state is RegistrationSuccess) {
+              _registrationLoginMessage('You have registered successfully! You will now be redirected to the Home Page.', '/home_page');
+            }
+
+            if (state is RegistrationFailure) {
+              _errorMessage('WARNING!', 'You have failed to register! Please try again.');
+            }
+
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  TextField(controller: usernameController, decoration: InputDecoration(labelText: 'Username'),
+                    onChanged: (value) {
+                      setState(() {
+                        username = value;
+                      });
+                    },
+                  ),
+                  TextField(controller: fullnameController, decoration: InputDecoration(labelText: 'Full Name'),
+                    onChanged: (value) {
+                      setState(() {
+                        fullName = value;
+                      });
+                    }
+                  ),
+                  TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email'),
+                      onChanged: (value) {
+                        setState(() {
+                          email = value;
+                        });
+                      }
+                    ),
+                  TextField(controller: passwordController, decoration: InputDecoration(labelText: 'Password'),
+                    onChanged: (value) {
+                      setState(() {
+                        pwd = value;
+                      });
+                    }
+                  ),
+                  TextField(controller: confirmPasswordController, decoration: InputDecoration(labelText: 'Confirm Password')),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<RegistrationBloc>().add(
+                        RegisterUserEvent(
+                          username: username,
+                          fullName: fullName,
+                          email: email,
+                          password: pwd,
+                        ),
+                      );
+                    },
+                    child: Text('Register'),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }*/
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Registration')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: BlocListener<RegistrationBloc, RegistrationState>(
+          listener: (context, state) {
+            if (state is RegistrationSuccess) {
+              // Show success message and redirect to Home Page
+              _registrationLoginMessage('You have registered successfully! You will now be redirected to the Home Page.', '/home_page');
+            }
+
+            if (state is RegistrationFailure) {
+              // Show error message and stay on the Registration Page
+              _errorMessage('You have failed to register! Please try again.', '/registration_page',);
+            }
+          },
+          child: BlocBuilder<RegistrationBloc, RegistrationState>(
+            builder: (context, state) {
+              if (state is RegistrationLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),  // Show a loading spinner
+                );
+              }
+
+              return SingleChildScrollView(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: usernameController,
+                      decoration: InputDecoration(labelText: 'Username'),
+                      onChanged: (value) {
+                        setState(() {
+                          username = value;
+                        });
+                      },
+                    ),
+                    TextField(
+                      controller: fullnameController,
+                      decoration: InputDecoration(labelText: 'Full Name'),
+                      onChanged: (value) {
+                        setState(() {
+                          fullName = value;
+                        });
+                      },
+                    ),
+                    TextField(
+                      controller: emailController,
+                      decoration: InputDecoration(labelText: 'Email'),
+                      onChanged: (value) {
+                        setState(() {
+                          email = value;
+                        });
+                      },
+                    ),
+                    TextField(
+                      controller: passwordController,
+                      decoration: InputDecoration(labelText: 'Password'),
+                      onChanged: (value) {
+                        setState(() {
+                          pwd = value;
+                        });
+                      },
+                    ),
+                    TextField(
+                      controller: confirmPasswordController,
+                      decoration: InputDecoration(labelText: 'Confirm Password'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<RegistrationBloc>().add(
+                          RegisterUserEvent(
+                            username: username,
+                            fullName: fullName,
+                            email: email,
+                            password: pwd,
+                          ),
+                        );
+                      },
+                      child: Text('Register'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
