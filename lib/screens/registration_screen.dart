@@ -93,31 +93,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  registrationFunction() async{
-
-  }
-
-  Future<void> _showMyDialog(String title, String bodyText) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog.adaptive(
-          title: Text(title, style: kSideMenuBlueTextStyle),
-          content: Text(bodyText, style: kLightSemiBoldTextStyle),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK', style: kLightSemiBoldTextStyle),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   Future<void> _registrationLoginMessage(String messageContent, String redirectRoute) async {
     return showDialog<void>(
       context: context,
@@ -193,368 +168,28 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   @override
-  /*Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      child: Scaffold(
-        endDrawerEnableOpenDragGesture: false,
-        drawer: SideDrawer(),
-        appBar: AppBar(
-          leading: Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(Icons.menu),
-                color: kWhiteColor,
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-              );
-            },
-          ),
-          actions: <Widget>[],
-          centerTitle: true,
-          title: Text('Registration Screen', style:TextStyle(color: kWhiteColor),),
-          backgroundColor: kThemeBlueColor,
-        ),
-        body: showSpinner == true ? SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-              SizedBox(height: 10,),
-              Text('Logging In'),
-            ],
-          ),
-        ) : SingleChildScrollView(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const SizedBox(
-                height: 15.0,
-              ),
-              HeroLogo(
-                height: 220,
-                image: 'assets/images/todo-list-dark-theme-logo.png',
-                tag: 'photo',
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              // Username
-              TextField(
-                controller: usernameController,
-                keyboardType: TextInputType.text,
-                onChanged: (value) {
-                  username = value;
-                },
-                style: const TextStyle(color: kThemeBlueColor),
-                decoration: textInputDecoration(
-                  'Enter your username',
-                ),
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              // Fullname
-              TextField(
-                controller: fullnameController,
-                keyboardType: TextInputType.text,
-                onChanged: (value) {
-                  fullName = fullnameController.text;
-                },
-                style: const TextStyle(color: kThemeBlueColor),
-                decoration: textInputDecoration(
-                  'Enter your full name',
-                ),
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              // Email ID
-              TextFormField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                onChanged: (value) {
-                  email = value;
-                  String emailValue = '';
-                  setState(() {
-                    emailValue = email;
-                  });
-                  if (emailValue.isEmpty) {setState(() {
-                    isEmailIdValid = false;});
-                  }
-                  final regex = RegExp(emailRegex);
-                  if (!regex.hasMatch(emailValue)) {
-                    setState(() {
-                      isEmailIdValid = false;
-                    });
-                  } else {
-                    setState(() {
-                      isEmailIdValid = true;
-                    });
-                  }
-                },
-                style: const TextStyle(color: kThemeBlueColor),
-                decoration: textInputDecoration(
-                  'Enter your email',
-                ),
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              // Password
-              TextField(
-                controller: passwordController,
-                obscureText: !_passwordVisible,
-                onChanged: (value) {
-                  setState(() {
-                    pwd = value;
-                  });
-                  validatePassword();
-                },
-                style: const TextStyle(color: kThemeBlueColor),
-                decoration: passwordInputDecoration(
-                  'Enter your password',
-                  _passwordVisible,  () {
-                  setState(() {
-                    _passwordVisible = !_passwordVisible;
-                  });
-                },
-                ),
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              // Confirm Password
-              TextField(
-                controller: confirmPasswordController,
-                obscureText: !_confirmPasswordVisible,
-                onChanged: (value) {
-                  confirmPwd = value;
-                  if (pwd == confirmPwd) {
-                    setState(() {
-                      doPasswordsMatch = true;
-                    });
-                  } else {
-                    setState(() {
-                      doPasswordsMatch = false;
-                    });
-                  }
-
-                  if (isLengthValid &&  isUppercaseValid &&  isNumberValid &&  isSpecialCharValid &&  doPasswordsMatch) {
-                    setState(() {
-                      allPwdCriteriaMatch = true;
-                    });
-                  } else {
-                    setState(() {
-                      allPwdCriteriaMatch = false;
-                    });
-                  }
-                },
-                style: const TextStyle(color: kThemeBlueColor),
-                decoration: passwordInputDecoration(
-                  'Confirm your password',
-                  _confirmPasswordVisible,  () {
-                  setState(() {
-                    _confirmPasswordVisible = !_confirmPasswordVisible;
-                  });
-                },
-                ),
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              // Password Criteria
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildCriteriaCheck('1 Capital Letter', isUppercaseValid),
-                      _buildCriteriaCheck('8 Characters', isLengthValid),
-                    ],
-                  ),
-                  const SizedBox(height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildCriteriaCheck('1 Special Character', isSpecialCharValid),
-                      _buildCriteriaCheck('1 Number', isNumberValid),
-                    ],
-                  ),
-                  const SizedBox(height: 5,
-                  ),
-                  Row(
-                    children: [
-                      _buildCriteriaCheck('Passwords Match', doPasswordsMatch),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-              RoundedButton(
-                title: 'Register',
-                colour: (isEmailIdValid &&username.isNotEmpty &&fullName.isNotEmpty &&allPwdCriteriaMatch) ? kThemeBlueColor: kLightTitleColor,
-                onPress: (isEmailIdValid &&username.isNotEmpty &&fullName.isNotEmpty &&allPwdCriteriaMatch) ? registrationFunction : null,
-              ),
-              Row(
-                children: [
-                  const Text("By registering, you accept our", style: kRegularRedText),
-                  TextButton(
-                    child: const Text('Privacy Policy'),
-                    onPressed: () {
-                      launchUrl(Uri.parse('https://realestate-vgcw.onrender.com/mobileapp-privacy-policy'));
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 15.0,
-              ),
-            ],
-          ),
-        ),
-        resizeToAvoidBottomInset: true,
-      ),
-    );
-  }*/
-
- /* Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => RegistrationBloc(authRepository: AuthRepository()),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Register'),
-        ),
-        body: BlocListener<RegistrationBloc, RegistrationState>(
-          listener: (context, state) {
-            if (state is RegistrationLoading) {
-              // Show loading indicator
-            } else if (state is RegistrationSuccess) {
-              // Show success message
-            } else if (state is RegistrationFailure) {
-              // Show error message
-            }
-          },
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                TextField(controller: usernameController, decoration: InputDecoration(labelText: 'Username')),
-                TextField(controller: fullnameController, decoration: InputDecoration(labelText: 'Full Name')),
-                TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email')),
-                TextField(controller: passwordController, decoration: InputDecoration(labelText: 'Password')),
-                TextField(controller: confirmPasswordController, decoration: InputDecoration(labelText: 'Confirm Password')),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<RegistrationBloc>().add(
-                      RegisterUserEvent(
-                        username: usernameController.text,
-                        fullName: fullnameController.text,
-                        email: emailController.text,
-                        password: passwordController.text,
-                      ),
-                    );
-                  },
-                  child: Text('Register'),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }*/
-
-  /*Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Registration')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: BlocBuilder<RegistrationBloc, RegistrationState>(
-          builder: (context, state) {
-            if (state is RegistrationLoading) {
-              return Center(
-                child: CircularProgressIndicator(),  // Show a loading spinner
-              );
-            }
-
-            if (state is RegistrationSuccess) {
-              _registrationLoginMessage('You have registered successfully! You will now be redirected to the Home Page.', '/home_page');
-            }
-
-            if (state is RegistrationFailure) {
-              _errorMessage('WARNING!', 'You have failed to register! Please try again.');
-            }
-
-            return SingleChildScrollView(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  TextField(controller: usernameController, decoration: InputDecoration(labelText: 'Username'),
-                    onChanged: (value) {
-                      setState(() {
-                        username = value;
-                      });
-                    },
-                  ),
-                  TextField(controller: fullnameController, decoration: InputDecoration(labelText: 'Full Name'),
-                    onChanged: (value) {
-                      setState(() {
-                        fullName = value;
-                      });
-                    }
-                  ),
-                  TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email'),
-                      onChanged: (value) {
-                        setState(() {
-                          email = value;
-                        });
-                      }
-                    ),
-                  TextField(controller: passwordController, decoration: InputDecoration(labelText: 'Password'),
-                    onChanged: (value) {
-                      setState(() {
-                        pwd = value;
-                      });
-                    }
-                  ),
-                  TextField(controller: confirmPasswordController, decoration: InputDecoration(labelText: 'Confirm Password')),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.read<RegistrationBloc>().add(
-                        RegisterUserEvent(
-                          username: username,
-                          fullName: fullName,
-                          email: email,
-                          password: pwd,
-                        ),
-                      );
-                    },
-                    child: Text('Register'),
-                  ),
-                ],
-              ),
+      endDrawerEnableOpenDragGesture: false,
+      drawer: SideDrawer(),
+      appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              color: kWhiteColor,
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             );
           },
         ),
+        actions: <Widget>[],
+        centerTitle: true,
+        title: Text('Registration Screen', style:TextStyle(color: kWhiteColor),),
+        backgroundColor: kThemeBlueColor,
       ),
-    );
-  }*/
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Registration')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: BlocListener<RegistrationBloc, RegistrationState>(
@@ -581,48 +216,178 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    HeroLogo(
+                      height: 220,
+                      image: 'assets/images/todo-list-dark-theme-logo.png',
+                      tag: 'photo',
+                    ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    //Username
                     TextField(
                       controller: usernameController,
-                      decoration: InputDecoration(labelText: 'Username'),
+                      keyboardType: TextInputType.text,
+                      style: const TextStyle(color: kThemeBlueColor),
+                      decoration: textInputDecoration(
+                        'Enter your username',
+                      ),
                       onChanged: (value) {
                         setState(() {
                           username = value;
                         });
                       },
                     ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    //Full name
                     TextField(
                       controller: fullnameController,
-                      decoration: InputDecoration(labelText: 'Full Name'),
+                      keyboardType: TextInputType.text,
+                      style: const TextStyle(color: kThemeBlueColor),
+                      decoration: textInputDecoration(
+                        'Enter your full name',
+                      ),
                       onChanged: (value) {
                         setState(() {
                           fullName = value;
                         });
                       },
                     ),
-                    TextField(
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    //Email ID
+                    TextFormField(
                       controller: emailController,
-                      decoration: InputDecoration(labelText: 'Email'),
+                      keyboardType: TextInputType.emailAddress,
                       onChanged: (value) {
+                        String emailValue = '';
                         setState(() {
                           email = value;
+                          emailValue = email;
                         });
+                        if (emailValue.isEmpty) {setState(() {
+                          isEmailIdValid = false;});
+                        }
+                        final regex = RegExp(emailRegex);
+                        if (!regex.hasMatch(emailValue)) {
+                          setState(() {
+                            isEmailIdValid = false;
+                          });
+                        } else {
+                          setState(() {
+                            isEmailIdValid = true;
+                          });
+                        }
                       },
+                      style: const TextStyle(color: kThemeBlueColor),
+                      decoration: textInputDecoration(
+                        'Enter your email',
+                      ),
                     ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    //Password
                     TextField(
                       controller: passwordController,
-                      decoration: InputDecoration(labelText: 'Password'),
+                      obscureText: !_passwordVisible,
+                      style: const TextStyle(color: kThemeBlueColor),
+                      decoration: passwordInputDecoration(
+                        'Enter your password',
+                        _passwordVisible,  () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                      ),
                       onChanged: (value) {
                         setState(() {
                           pwd = value;
                         });
+                        validatePassword();
                       },
                     ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    //Confirm Password
                     TextField(
                       controller: confirmPasswordController,
-                      decoration: InputDecoration(labelText: 'Confirm Password'),
+                      obscureText: !_confirmPasswordVisible,
+                      onChanged: (value) {
+                        confirmPwd = value;
+                        if (pwd == confirmPwd) {
+                          setState(() {
+                            doPasswordsMatch = true;
+                          });
+                        } else {
+                          setState(() {
+                            doPasswordsMatch = false;
+                          });
+                        }
+
+                        if (isLengthValid &&  isUppercaseValid &&  isNumberValid &&  isSpecialCharValid &&  doPasswordsMatch) {
+                          setState(() {
+                            allPwdCriteriaMatch = true;
+                          });
+                        } else {
+                          setState(() {
+                            allPwdCriteriaMatch = false;
+                          });
+                        }
+                      },
+                      style: const TextStyle(color: kThemeBlueColor),
+                      decoration: passwordInputDecoration(
+                        'Confirm your password',
+                        _confirmPasswordVisible,  () {
+                        setState(() {
+                          _confirmPasswordVisible = !_confirmPasswordVisible;
+                        });
+                      },
+                      ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    // Password Criteria
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            _buildCriteriaCheck('1 Capital Letter', isUppercaseValid),
+                            _buildCriteriaCheck('8 Characters', isLengthValid),
+                          ],
+                        ),
+                        const SizedBox(height: 5,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            _buildCriteriaCheck('1 Special Character', isSpecialCharValid),
+                            _buildCriteriaCheck('1 Number', isNumberValid),
+                          ],
+                        ),
+                        const SizedBox(height: 5,
+                        ),
+                        Row(
+                          children: [
+                            _buildCriteriaCheck('Passwords Match', doPasswordsMatch),
+                          ],
+                        )
+                      ],
+                    ),
+                    RoundedButton(
+                      title: 'Register',
+                      colour: (isEmailIdValid &&username.isNotEmpty &&fullName.isNotEmpty &&allPwdCriteriaMatch) ? kThemeBlueColor: kLightTitleColor,
+                      onPress: (isEmailIdValid &&username.isNotEmpty &&fullName.isNotEmpty &&allPwdCriteriaMatch) ? () {
                         context.read<RegistrationBloc>().add(
                           RegisterUserEvent(
                             username: username,
@@ -631,8 +396,21 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             password: pwd,
                           ),
                         );
-                      },
-                      child: Text('Register'),
+                      } : null,
+                    ),
+                    Row(
+                      children: [
+                        const Text("By registering, you accept our", style: kRegularRedText),
+                        TextButton(
+                          child: const Text('Privacy Policy'),
+                          onPressed: () {
+                            launchUrl(Uri.parse('https://realestate-vgcw.onrender.com/mobileapp-privacy-policy'));
+                          },
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15.0,
                     ),
                   ],
                 ),
