@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list/repositories/auth_repository.dart';
 import 'package:todo_list/screens/about_page.dart';
 import 'package:todo_list/screens/home_page.dart';
+import 'package:todo_list/screens/login_page.dart';
 import 'package:todo_list/screens/registration_screen.dart';
-import 'package:todo_list/screens/widgets/consts.dart';
-
+import 'blocs/login/login_bloc.dart';
 import 'blocs/registration/registration_bloc.dart';
 
 void main() {
@@ -49,6 +49,10 @@ class MyApp extends StatelessWidget {
         '/registration_page': (context) => BlocProvider(
           create: (_) => RegistrationBloc(authRepository: AuthRepository()),
           child: RegistrationScreen(),
+        ),
+        '/login_page': (context) => BlocProvider(
+          create: (_) => LoginBloc(authRepository: AuthRepository()),
+          child: LoginPage(),
         ),
       },
     );
