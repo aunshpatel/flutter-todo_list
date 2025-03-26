@@ -1,39 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_list/repositories/auth_repository.dart';
 import 'package:todo_list/screens/about_page.dart';
 import 'package:todo_list/screens/home_page.dart';
 import 'package:todo_list/screens/login_page.dart';
 import 'package:todo_list/screens/registration_screen.dart';
+import 'package:todo_list/screens/widgets/consts.dart';
 import 'blocs/login/login_bloc.dart';
 import 'blocs/registration/registration_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  /*Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'The Todo List',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(0, 227, 231, 239)),
-        useMaterial3: false,
-      ),
-      initialRoute: '/home_page',
-      routes: {
-        '/home_page':(context) => const HomePage(),
-        '/about_us':(context) => const AboutPage(),
-        '/registration_page':(context) => RegistrationScreen(),
-      },
-    );
-  }*/
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  String loginEmailID = '', loginPassword = '';
+
+  @override
+  void initState() {
+    super.initState();
+    loginFunction();
+  }
+  
+  loginFunction() async{
+    prefs = await SharedPreferences.getInstance();
+    isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+    loginEmailID = prefs.getString('email') ?? '';
+    loginPassword = prefs.getString('password') ?? '';
+    currentUserID = prefs!.getString('currentUserID') ?? '';
+
+    if(isLoggedIn == true){
+      print('User $currentUserID has logged in with email ID:$loginEmailID & pwd:$loginPassword');
+    }
+    else{
+      print('User has not logged in');
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -58,3 +69,35 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+/*
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'The Todo List',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(0, 227, 231, 239)),
+        useMaterial3: false,
+      ),
+      initialRoute: '/home_page',
+      routes: {
+        '/home_page': (context) => const HomePage(),
+        '/about_us': (context) => const AboutPage(),
+        '/registration_page': (context) => BlocProvider(
+          create: (_) => RegistrationBloc(authRepository: AuthRepository()),
+          child: RegistrationScreen(),
+        ),
+        '/login_page': (context) => BlocProvider(
+          create: (_) => LoginBloc(authRepository: AuthRepository()),
+          child: LoginPage(),
+        ),
+      },
+    );
+  }
+}*/
