@@ -23,9 +23,9 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       barrierDismissible: false,
       builder: (context) {
-        return AlertDialog(
-          title: Text(title),
-          content: Text(message),
+        return AlertDialog.adaptive(
+          title: Text(title, style: kLightSemiBoldTextStyle,),
+          content: Text(message, style: kLightSemiBoldTextStyle,),
           actions: [
             TextButton(
               onPressed: () {
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.pushReplacementNamed(context, '/home_page');
                 }
               },
-              child: Text('OK'),
+              child: Text('OK', style: kLightSemiBoldTextStyle,),
             ),
           ],
         );
