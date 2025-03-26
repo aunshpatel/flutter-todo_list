@@ -39,6 +39,7 @@ dependencies:
   flutter_native_splash: ^2.4.5
   http: ^1.3.0
   flutter_bloc: ^9.1.0
+  equatable: ^2.0.7
 
   # whenever flutter clean is used, type flutter pub run flutter_native_splash:create in terminal so that the splash page is always created
 
