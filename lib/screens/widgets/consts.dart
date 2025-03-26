@@ -7,6 +7,12 @@ String apiLinkConstant = 'https://the-todo-list.onrender.com/api';
 
 String currentUserID = '', token = '', jwtSecret = 'todolist-project', newUsername = '', newEmail = '', newPassword = '', newProfilePic = '', currentTodoID = '', profileUpdateError = '';
 
+bool automaticLogin = false;
+
+bool isRememberMeDisabled = false;
+
+bool isLoggedIn = false;
+
 var listingWithDiscount = [], listingForRent = [], listingForSale = [];
 
 const kWhiteColor = Colors.white;
@@ -183,12 +189,6 @@ var kFocusedBorder = const OutlineInputBorder(
   borderSide: BorderSide(color: kDarkTitleColor, width: 2.0),
   borderRadius: BorderRadius.all(Radius.circular(32.0)),
 );
-
-bool automaticLogin = false;
-
-bool isRememberMeDisabled = false;
-
-bool isLoggedIn = false;
 
 class HeroLogo extends StatelessWidget {
   HeroLogo({required this.height,required this.image, required this.tag});
