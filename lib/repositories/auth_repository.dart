@@ -76,6 +76,7 @@ class AuthRepository {
         // Assuming success means returning true
         SharedPreferences prefs = await SharedPreferences.getInstance();
         final Map<String, dynamic> responseData = jsonDecode(response.body);
+        print("responseData['_id']:${responseData['_id']}");
         prefs.setString('currentUserID', responseData['_id']);
         prefs.setString('name', responseData['fullname']);
         prefs.setString('username', responseData['username']);

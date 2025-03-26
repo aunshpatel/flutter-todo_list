@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_list/repositories/auth_repository.dart';
+import 'package:todo_list/repositories/user_repositories.dart';
 import 'package:todo_list/screens/about_page.dart';
 import 'package:todo_list/screens/home_page.dart';
 import 'package:todo_list/screens/login_page.dart';
+import 'package:todo_list/screens/profile_page.dart';
 import 'package:todo_list/screens/registration_screen.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 import 'blocs/login/login_bloc.dart';
+import 'blocs/profile/profile_bloc.dart';
 import 'blocs/registration/registration_bloc.dart';
 
 void main() {
@@ -31,10 +34,12 @@ class _MyAppState extends State<MyApp> {
   
   loginFunction() async{
     prefs = await SharedPreferences.getInstance();
-    isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
-    loginEmailID = prefs.getString('email') ?? '';
-    loginPassword = prefs.getString('password') ?? '';
-    currentUserID = prefs!.getString('currentUserID') ?? '';
+    setState(() {
+      isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+      loginEmailID = prefs.getString('email') ?? '';
+      loginPassword = prefs.getString('password') ?? '';
+      currentUserID = prefs!.getString('currentUserID') ?? '';
+    });
 
     if(isLoggedIn == true){
       print('User $currentUserID has logged in with email ID:$loginEmailID & pwd:$loginPassword');
@@ -64,6 +69,10 @@ class _MyAppState extends State<MyApp> {
         '/login_page': (context) => BlocProvider(
           create: (_) => LoginBloc(authRepository: AuthRepository()),
           child: LoginPage(),
+        ),
+        '/profile_page': (context) => BlocProvider(
+          create: (_) => ProfileBloc(userRepository: UserRepository()),  // Provide the necessary BLoC for ProfilePage
+          child: ProfilePage(),
         ),
       },
     );
