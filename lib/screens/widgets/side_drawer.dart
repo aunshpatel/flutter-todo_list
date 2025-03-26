@@ -63,22 +63,90 @@ class _SideDrawerState extends State<SideDrawer> {
                   },
                 ),
               ),
-              //About Us Screen
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: kWhiteColor,
+              if(!isLoggedIn)...[
+                //Login Screen
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: kWhiteColor,
+                      ),
                     ),
                   ),
+                  child: ListTile(
+                    title: Text('Login', style:kSideMenuWhiteTextStyle),
+                    onTap: (){
+                      Navigator.pushNamed(context, '/login_page');
+                    },
+                  ),
                 ),
-                child: ListTile(
-                  title: Text('Registration', style:kSideMenuWhiteTextStyle),
-                  onTap: (){
-                    Navigator.pushNamed(context, '/registration_page');
-                  },
+                //Registration Screen
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                  child: ListTile(
+                    title: Text('Registration', style:kSideMenuWhiteTextStyle),
+                    onTap: (){
+                      Navigator.pushNamed(context, '/registration_page');
+                    },
+                  ),
                 ),
-              ),
+              ],
+              if(isLoggedIn)...[
+                //Create A Todo
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                  child: ListTile(
+                    title: Text('Create A Todo', style:kSideMenuWhiteTextStyle),
+                    onTap: (){
+                      Navigator.pushNamed(context, '/create_todo_page');
+                    },
+                  ),
+                ),
+                //View All Todo
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                  child: ListTile(
+                    title: Text('View Al Todo', style:kSideMenuWhiteTextStyle),
+                    onTap: (){
+                      Navigator.pushNamed(context, '/view_all_todos');
+                    },
+                  ),
+                ),
+                //Profile
+                Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                  child: ListTile(
+                    title: Text('Profile', style:kSideMenuWhiteTextStyle),
+                    onTap: (){
+                      Navigator.pushNamed(context, '/profile_page');
+                    },
+                  ),
+                ),
+              ],
               //Privacy Policy & Contact Us
               Container(
                 decoration: const BoxDecoration(
