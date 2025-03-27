@@ -235,7 +235,7 @@ class _ProfilePageState extends State<ProfilePage> {
           prefs.setString('email', emailController.text.trim());
           prefs.setString('password', passwordController.text.trim());
         });
-        commonAlertBox(context, 'SUCCESS!', 'Your profile has been updated successfully!');
+        commonAlertBox(context, 'SUCCESS!', 'Your profile has updated successfully!');
       } else if (state is ProfileUpdateFailure) {
         print('Error:${state.error}');
         commonAlertBox(context, 'ERROR!', state.error);
