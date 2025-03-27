@@ -134,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                         showSpinner = true;
                       });
                       context.read<LoginBloc>().add(
-                        LoginSubmitted(email: email, password: password),
+                        LoginSubmitted(email: email.trim(), password: password.trim()),
                       );
                     },
                   );

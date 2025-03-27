@@ -388,10 +388,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       onPress: (isEmailIdValid &&username.isNotEmpty &&fullName.isNotEmpty &&allPwdCriteriaMatch) ? () {
                         context.read<RegistrationBloc>().add(
                           RegisterUserEvent(
-                            username: username,
-                            fullName: fullName,
-                            email: email,
-                            password: pwd,
+                            username: username.trim(),
+                            fullName: fullName.trim(),
+                            email: email.trim(),
+                            password: pwd.trim(),
                           ),
                         );
                       } : null,
