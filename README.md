@@ -1,16 +1,9 @@
-# todo_list
-
-A mobile application to complement the website created in MERN Stack
+# The Todo List
+A mobile application to complement the website created in MERN Stack.
+MERN Stack website: https://the-todo-list.onrender.com/
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Steps to run the project:
+1. To get all libraries, type 'flutter pub get' in terminal, and then press enter.
+2. Then, type 'flutter pub run flutter_native_splash:create' in terminal, and then press enter.
+3. In case if you do 'flutter clean', steps 1 and 2 have to be repeated.
