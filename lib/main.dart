@@ -14,7 +14,17 @@ import 'blocs/profile/profile_bloc.dart';
 import 'blocs/registration/registration_bloc.dart';
 
 void main() {
-  runApp(MyApp());
+  // runApp(MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ProfileBloc(userRepository: UserRepository()),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_list/repositories/user_repositories.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
+import '../blocs/profile/profile_bloc.dart';
+import '../blocs/profile/profile_event.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -127,14 +130,14 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  logoutMessage() async {
+  messageAlertbox(String title, String content) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
-          title: const Text('SUCCESS!', style: kLightSemiBoldTextStyle,),
-          content: const Text('You have logged out successfully! You will be redirected to home page now.', style: kLightSemiBoldTextStyle),
+          title: Text(title, style: kBlueBoldTextStyle,),
+          content: Text(content, style: kLightSemiBoldTextStyle),
           actions: <Widget>[
             TextButton(
               child: const Text('OK', style: kLightSemiBoldTextStyle),
@@ -142,6 +145,96 @@ class _ProfilePageState extends State<ProfilePage> {
                 Navigator.pop(context);
                 Navigator.pushReplacementNamed(context, '/home_page');
               },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _confirmLogout(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: Text('LOGOUT?', style: kBlueBoldTextStyle,),
+          content: Text('Are you sure you want to logout?', style: kBlueSize20SemiBoldTextStyle,),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Cancel', style: kBlueSize20SemiBoldTextStyle,),
+            ),
+            TextButton(
+              onPressed: () async{
+                Navigator.pop(context);
+                if (currentUserID != null) {
+                  prefs = await SharedPreferences.getInstance();
+                  await prefs.clear();
+
+                  setState(() {
+                    username = '';
+                    usernameController.text = '';
+                    email = '';
+                    emailController.text = '';
+                    fullname = '';
+                    fullnameController.text = '';
+                    currentUserID = '';
+                    passwordController.text = '';
+                    password = '';
+                    isLoggedIn = false;
+                  });
+                  prefs.setBool('isLoggedIn', isLoggedIn);
+                  messageAlertbox('SUCCESS!', 'You have logged out successfully! You will be redirected to home page now.');
+                }
+              },
+              child: Text('Logout', style: kRedSize20SemiBoldTextStyle,),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _confirmDelete(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: Text('DELETE PROFILE?', style: kBlueBoldTextStyle,),
+          content: Text('Are you sure you want to delete your profile? This action cannot be undone.', style: kBlueSize20SemiBoldTextStyle,),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('Cancel', style: kBlueSize20SemiBoldTextStyle,),
+            ),
+            TextButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                if (currentUserID != null) {
+                  context.read<ProfileBloc>().add(DeleteProfile());
+                  prefs = await SharedPreferences.getInstance();
+                  await prefs.clear();
+                  setState(() {
+                    username = '';
+                    usernameController.text = '';
+                    email = '';
+                    emailController.text = '';
+                    fullname = '';
+                    fullnameController.text = '';
+                    currentUserID = '';
+                    passwordController.text = '';
+                    password = '';
+                    isLoggedIn = false;
+                  });
+                  prefs.setBool('isLoggedIn', isLoggedIn);
+
+                  messageAlertbox('SUCCESS!',
+                      'Your profile has been deleted successfully! You will be redirected to home page now.');
+                }
+              },
+              child: Text('Delete', style: kRedSize20SemiBoldTextStyle,),
             ),
           ],
         );
@@ -254,9 +347,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             RoundedButton(
-                              colour:kDarkTitleColor,
+                              colour:kThemeBlueColor,
                               title:'Logout',
-                              onPress:() async {
+                              onPress:() => _confirmLogout(context),
+                              /*onPress:() async {
                                 prefs = await SharedPreferences.getInstance();
                                 await prefs.clear();
 
@@ -273,18 +367,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                   isLoggedIn = false;
                                 });
                                 prefs.setBool('isLoggedIn', isLoggedIn);
-                                logoutMessage();
-                              },
+                                messageAlertbox('SUCCESS!', 'You have logged out successfully! You will be redirected to home page now.');
+                              },*/
                             ),
                             RoundedButton(
                               colour:kRedColor,
                               title:'Delete',
-                              onPress:() async{
-                                prefs = await SharedPreferences.getInstance();
-                                setState(() {
-                                  // triggerDeleteProfile('WARNING', 'Are you sure you want to delete your profile?');
-                                });
-                              },
+                              onPress:() => _confirmDelete(context),
                             ),
                           ],
                         )

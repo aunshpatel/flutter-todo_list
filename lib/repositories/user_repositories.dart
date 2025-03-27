@@ -3,21 +3,6 @@ import 'package:http/http.dart' as http;
 import '../screens/widgets/consts.dart';
 
 class UserRepository{
-  /*Future<Map<String, dynamic>?> getUserProfile(String userId) async {
-    try {
-      final response = await http.get(Uri.parse('$apiLinkConstant/user/get-user/$userId'));
-      if (response.statusCode == 200) {
-        return jsonDecode(response.body); // Convert response to Map
-      } else {
-        print('Failed to fetch user data: ${response.statusCode}');
-        return null;
-      }
-    } catch (e) {
-      print('Error fetching user data: $e');
-      return null;
-    }
-  }*/
-
   // Get the user profile data
   Future<Map<String, String>> getUserProfile() async {
     print("currentUserID 2:$currentUserID");
@@ -41,13 +26,14 @@ class UserRepository{
   }
 
   // Update the user profile
-  Future<void> updateProfile(String username, String fullname, String email) async {
+  Future<void> updateProfile(String username, String fullname, String email, String password) async {
     final response = await http.put(
-      Uri.parse('$apiLinkConstant/user/update-user/$currentUserID'),
+      Uri.parse('$apiLinkConstant/user/update/$currentUserID'),
       body: {
         'username': username,
         'fullname': fullname,
         'email': email,
+        'password':password,
       },
     );
 
@@ -58,7 +44,7 @@ class UserRepository{
 
   // Delete the user profile
   Future<void> deleteProfile() async {
-    final response = await http.delete(Uri.parse('$apiLinkConstant/user/delete-user/:id'));
+    final response = await http.delete(Uri.parse('$apiLinkConstant/user/delete/$currentUserID'));
 
     if (response.statusCode != 200) {
       throw Exception('Failed to delete profile');
