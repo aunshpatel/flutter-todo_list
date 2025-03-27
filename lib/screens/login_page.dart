@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../blocs/login/login_bloc.dart';
 import '../blocs/login/login_event.dart';
 import '../blocs/login/login_state.dart';
@@ -140,6 +141,19 @@ class _LoginPageState extends State<LoginPage> {
                   );
                 },
               ),
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("New User?", style: kLightSize18RegularTextStyle),
+                TextButton(
+                  child: const Text('Register Here', style: kBlueSize18RegularTextStyle,),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/registration_page');
+                  },
+                ),
+              ],
             ),
           ],
         ),
