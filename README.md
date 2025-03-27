@@ -3,6 +3,8 @@ A mobile application to complement the website created with MongoDB, Express.js,
 
 Link to the website: https://the-todo-list.onrender.com/
 
+Github repository link: https://github.com/aunshpatel/the_todo_list.git
+
 ## Getting Started
 Steps to run the project:
 1. To get all libraries, type 'flutter pub get' in terminal, and then press enter.
