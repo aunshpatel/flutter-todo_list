@@ -184,37 +184,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  /*void _updateProfile() {
-    final profileBloc = context.read<ProfileBloc>();
-
-    profileBloc.add(UpdateProfile(
-      username: usernameController.text.trim(),
-      fullname: fullnameController.text.trim(),
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    ));
-  }*/
-
-  /*void _updateProfile() {
-    final profileBloc = context.read<ProfileBloc>();
-
-    profileBloc.add(UpdateProfile(
-      username: usernameController.text.trim(),
-      fullname: fullnameController.text.trim(),
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    ));
-
-    // Listen for profile update state and show alert dialog accordingly
-    profileBloc.stream.listen((state) {
-      if (state is ProfileUpdated) {
-        commonAlertBox(context, 'SUCCESS!', 'Your profile has been updated successfully!');
-      } else if (state is ProfileUpdateFailed) {
-        commonAlertBox(context, 'ERROR!', 'Failed to update profile. Please try again.');
-      }
-    });
-  }*/
-
   void _updateProfile() {
     final profileBloc = context.read<ProfileBloc>();
 

@@ -5,9 +5,7 @@ import '../screens/widgets/consts.dart';
 class UserRepository{
   // Get the user profile data
   Future<Map<String, String>> getUserProfile() async {
-    print("currentUserID 2:$currentUserID");
     final response = await http.get(Uri.parse('$apiLinkConstant/user/get-user/$currentUserID'));
-    print('response.body:${response.body}');
     if (response.statusCode == 200) {
       // Assuming the response is a list, we'll grab the first element
       Map<String, dynamic> userProfile = json.decode(response.body);
@@ -24,23 +22,6 @@ class UserRepository{
       throw Exception('Failed to load profile');
     }
   }
-
-  // Update the user profile
-  /*Future<void> updateProfile(String username, String fullname, String email, String password) async {
-    final response = await http.put(
-      Uri.parse('$apiLinkConstant/user/update/$currentUserID'),
-      body: {
-        'username': username,
-        'fullname': fullname,
-        'email': email,
-        'password':password,
-      },
-    );
-
-    if (response.statusCode != 200) {
-      throw Exception('Failed to update profile');
-    }
-  }*/
 
   Future<void> updateProfile(String username, String fullname, String email, String password) async {
     final response = await http.post(Uri.parse('$apiLinkConstant/user/update/$currentUserID'),

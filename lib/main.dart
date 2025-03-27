@@ -14,7 +14,6 @@ import 'blocs/profile/profile_bloc.dart';
 import 'blocs/registration/registration_bloc.dart';
 
 void main() {
-  // runApp(MyApp());
   runApp(
     MultiBlocProvider(
       providers: [
