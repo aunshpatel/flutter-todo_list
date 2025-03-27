@@ -73,9 +73,15 @@ const kWhiteBoldSize15Text = TextStyle(
   color: Colors.white
 );
 
+const kSemiBoldBlueSize15Text = TextStyle(
+  fontWeight: FontWeight.w500,
+  color: kThemeBlueColor,
+  fontSize: 15,
+);
+
 const kRegularRedSize15Text = TextStyle(
   fontWeight: FontWeight.normal,
-  color: kContinueWithGoogleButton,
+  color: kRedColor,
   fontSize: 15,
 );
 

@@ -306,6 +306,25 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     const SizedBox(height:10),
                     const Text("In case you do not see your password and want to update it, you can just enter the new password and press 'Update' button.", style: kRegularRedSize15Text),
+                    const SizedBox(height:10),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("PLEASE NOTE:", style: kRedBoldSize15Text),
+                          ],
+                        ),
+                        const SizedBox(width: 18), // Add some spacing
+                        Expanded(
+                          child: Text(
+                            "If the password is empty and 'Update Profile' button is pressed, your password will be empty and you will not be able to login. Please do not forget to type in a password in that scenario.",
+                            style: kSemiBoldBlueSize15Text,
+                          ),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height:20),
                     RoundedButton(
                       colour:kLightTitleColor,
