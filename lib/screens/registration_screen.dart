@@ -97,17 +97,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
-          title: const Text('SUCCESS!', style: kSideMenuBlueSize20Text),
+          title: const Text('SUCCESS!', style: kBlueBoldSize20Text),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(messageContent, style: kLightSemiBoldSize20Text),
+                Text(messageContent, style: kBlueSize18Text),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('OK', style: TextStyle(color: kLightTitleColor),),
+              child: const Text('OK', style:kBlueSize18Text),
               onPressed: () {
                 // Navigator.pushNamed(context, '/login_screen');
                 Navigator.pushNamed(context, redirectRoute);
@@ -125,17 +125,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
-          title: Text(messageTitle, style: kSideMenuBlueSize20Text),
+          title: Text(messageTitle, style: kBlueBoldSize20Text),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(messageBody, style: kDarkSemiBoldSize16Text),
+                Text(messageBody, style: kBlueSize18Text),
               ],
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('OK', style: TextStyle(color: kLightTitleColor),),
+              child: Text('OK', style:kBlueSize18Text),
               onPressed: () {
                 Navigator.of(context).pop();
               },

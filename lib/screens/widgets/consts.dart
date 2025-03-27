@@ -134,6 +134,12 @@ const kBlueSize18Text = TextStyle(
   color: kThemeBlueColor,
 );
 
+const kRedSize18Text = TextStyle(
+  fontWeight: FontWeight.w500,
+  fontSize: 18,
+  color: kThemeBlueColor,
+);
+
 const kLightBoldSize18Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 18,
@@ -280,19 +286,14 @@ Future<void> commonAlertBox(BuildContext context, String title, String message) 
     barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog.adaptive(
-        title: Text(title, style: kSideMenuBlueSize20Text),
-        content: Text(message, style: kLightSemiBoldSize20Text),
+        title: Text(title, style: kBlueBoldSize20Text),
+        content: Text(message, style: kBlueSize18Text),
         actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                child: const Text('OK', style: kLightSemiBoldSize20Text),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
+          TextButton(
+            child: const Text('OK', style: kBlueSize18Text),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
           ),
         ],
       );

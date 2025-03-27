@@ -25,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
       barrierDismissible: false,
       builder: (context) {
         return AlertDialog.adaptive(
-          title: Text(title, style: kLightSemiBoldSize20Text,),
-          content: Text(message, style: kLightSemiBoldSize20Text,),
+          title: Text(title, style: kBlueBoldSize20Text,),
+          content: Text(message, style: kBlueSize18Text,),
           actions: [
             TextButton(
               onPressed: () {
@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.pushReplacementNamed(context, '/home_page');
                 }
               },
-              child: Text('OK', style: kLightSemiBoldSize20Text,),
+              child: Text('OK', style: kBlueSize18Text,),
             ),
           ],
         );
@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             });
             prefs.setBool('isLoggedIn', isLoggedIn);
             Future.delayed(Duration(milliseconds: 100), () {
-              _showMessage('SUCCESS!', 'You have logged in successfully! Redirecting to home page.', true);
+              _showMessage('SUCCESS!', 'You have logged in successfully! You will now be redirected to home page.', true);
             });
           }
           else if (state is LoginFailure) {

@@ -80,10 +80,10 @@ class _ProfilePageState extends State<ProfilePage> {
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
           title: Text(title, style: kBlueBoldSize20Text,),
-          content: Text(content, style: kLightSemiBoldSize20Text),
+          content: Text(content, style: kBlueSize18Text),
           actions: <Widget>[
             TextButton(
-              child: const Text('OK', style: kLightSemiBoldSize20Text),
+              child: const Text('OK', style: kBlueSize18Text),
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.pushReplacementNamed(context, '/home_page');
@@ -102,11 +102,11 @@ class _ProfilePageState extends State<ProfilePage> {
       builder: (context) {
         return AlertDialog.adaptive(
           title: Text('LOGOUT?', style: kBlueBoldSize20Text,),
-          content: Text('Are you sure you want to logout?', style: kBlueSemiBoldSize20Text,),
+          content: Text('Are you sure you want to logout?', style: kBlueSize18Text,),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: kBlueSemiBoldSize20Text,),
+              child: Text('Cancel', style: kBlueSize18Text,),
             ),
             TextButton(
               onPressed: () async{
@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   messageAlertbox('SUCCESS!', 'You have logged out successfully! You will be redirected to home page now.');
                 }
               },
-              child: Text('Logout', style: kRedSemiBoldSize20Text,),
+              child: Text('Logout', style: kRedSize18Text,),
             ),
           ],
         );
@@ -146,11 +146,11 @@ class _ProfilePageState extends State<ProfilePage> {
       builder: (context) {
         return AlertDialog.adaptive(
           title: Text('DELETE PROFILE?', style: kBlueBoldSize20Text,),
-          content: Text('Are you sure you want to delete your profile? This action cannot be undone.', style: kBlueSemiBoldSize20Text,),
+          content: Text('Are you sure you want to delete your profile? This action cannot be undone.', style: kBlueSize18Text,),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: kBlueSemiBoldSize20Text,),
+              child: Text('Cancel', style: kBlueSize18Text,),
             ),
             TextButton(
               onPressed: () async {
@@ -176,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   messageAlertbox('SUCCESS!', 'Your profile has been deleted successfully! You will be redirected to home page now.');
                 }
               },
-              child: Text('Delete', style: kRedSemiBoldSize20Text,),
+              child: Text('Delete', style: kRedSize18Text,),
             ),
           ],
         );
