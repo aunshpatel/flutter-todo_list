@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Center(child: CircularProgressIndicator()),
                 SizedBox(height: 20,),
-                Text('LOGGING IN', style: kBlueBoldSize20Text,),
+                Text('Hold on tight! You are being logged in.', style: kBlueBoldSize20Text,),
               ],
             ) : Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
