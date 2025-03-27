@@ -1,6 +1,6 @@
 # The Todo List
-A mobile application to complement the website created in MERN Stack.
-MERN Stack website: https://the-todo-list.onrender.com/
+```A mobile application to complement the website created in MERN Stack.
+Link to the website: https://the-todo-list.onrender.com/```
 
 ## Getting Started
 Steps to run the project:
