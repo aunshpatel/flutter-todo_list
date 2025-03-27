@@ -146,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
       builder: (context) {
         return AlertDialog.adaptive(
           title: Text('WARNING!', style: kBlueBoldSize20Text,),
-          content: Text('Are you sure you want to delete your profile? This action cannot be undone.', style: kBlueSize18Text,),
+          content: Text('Are you sure you want to delete your profile? This action can not be undone.', style: kBlueSize18Text,),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
