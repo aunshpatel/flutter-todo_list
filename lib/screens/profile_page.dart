@@ -101,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
       barrierDismissible: false,
       builder: (context) {
         return AlertDialog.adaptive(
-          title: Text('LOGOUT?', style: kBlueBoldSize20Text,),
+          title: Text('WARNING!', style: kBlueBoldSize20Text,),
           content: Text('Are you sure you want to logout?', style: kBlueSize18Text,),
           actions: [
             TextButton(
@@ -145,7 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
       barrierDismissible: false,
       builder: (context) {
         return AlertDialog.adaptive(
-          title: Text('DELETE PROFILE?', style: kBlueBoldSize20Text,),
+          title: Text('WARNING!', style: kBlueBoldSize20Text,),
           content: Text('Are you sure you want to delete your profile? This action cannot be undone.', style: kBlueSize18Text,),
           actions: [
             TextButton(
