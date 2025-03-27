@@ -205,8 +205,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           child: BlocBuilder<RegistrationBloc, RegistrationState>(
             builder: (context, state) {
               if (state is RegistrationLoading) {
-                return Center(
-                  child: CircularProgressIndicator(),  // Show a loading spinner
+
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(child: CircularProgressIndicator()),
+                    SizedBox(height: 20,),
+                    Text('Hold on tight! You are being registered.', style: kBlueBoldSize20Text,),
+                  ],
                 );
               }
 
