@@ -1,5 +1,6 @@
 # The Todo List
-A mobile application to complement the website created in MERN Stack.
+A mobile application to complement the website created with MongoDB, Express.js, React.js, Node.js(MERN Stack), RestAPI and Firebase.
+
 Link to the website: https://the-todo-list.onrender.com/
 
 ## Getting Started
