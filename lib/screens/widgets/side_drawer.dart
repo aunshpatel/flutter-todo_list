@@ -124,7 +124,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   child: ListTile(
-                    title: Text('View Al Todo', style:kSideMenuWhiteSize20Text),
+                    title: Text('View All Todos', style:kSideMenuWhiteSize20Text),
                     onTap: (){
                       Navigator.pushNamed(context, '/view_all_todos');
                     },
