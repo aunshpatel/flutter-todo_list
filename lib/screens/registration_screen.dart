@@ -364,8 +364,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             _buildCriteriaCheck('8 Characters', isLengthValid),
                           ],
                         ),
-                        const SizedBox(height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -373,14 +372,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             _buildCriteriaCheck('1 Number', isNumberValid),
                           ],
                         ),
-                        const SizedBox(height: 5,
-                        ),
+                        const SizedBox(height: 5),
                         Row(
                           children: [
                             _buildCriteriaCheck('Passwords Match', doPasswordsMatch),
                           ],
                         )
                       ],
+                    ),
+                    const SizedBox(
+                      height: 15.0,
                     ),
                     RoundedButton(
                       title: 'Register',
@@ -395,6 +396,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                         );
                       } : null,
+                    ),
+                    const SizedBox(
+                      height: 7.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
