@@ -397,6 +397,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       } : null,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("By registering, you accept our", style: kRegularRedSize15Text),
                         TextButton(
