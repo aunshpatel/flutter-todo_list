@@ -134,12 +134,13 @@ class _ProfilePageState extends State<ProfilePage> {
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
           title: const Text('SUCCESS!', style: kLightSemiBoldTextStyle,),
-          content: const Text('You have logged out successfully!', style: kLightSemiBoldTextStyle),
+          content: const Text('You have logged out successfully! You will be redirected to home page now.', style: kLightSemiBoldTextStyle),
           actions: <Widget>[
             TextButton(
               child: const Text('OK', style: kLightSemiBoldTextStyle),
               onPressed: () {
-                Navigator.pushNamed(context, '/main_screen');
+                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/home_page');
               },
             ),
           ],
@@ -257,20 +258,22 @@ class _ProfilePageState extends State<ProfilePage> {
                               title:'Logout',
                               onPress:() async {
                                 prefs = await SharedPreferences.getInstance();
-                                prefs.setBool('isLoggedIn', isLoggedIn);
-                                prefs.setString('email', '');
-                                prefs.setString('username', '');
-                                prefs.setString('password', '');
-                                prefs.setString('avatarImage', '');
-                                prefs.setString('currentUserID', '');
-                                prefs.setString('userID', '');
+                                await prefs.clear();
+
                                 setState(() {
-                                  isLoggedIn = false;
+                                  username = '';
+                                  usernameController.text = '';
+                                  email = '';
+                                  emailController.text = '';
+                                  fullname = '';
+                                  fullnameController.text = '';
                                   currentUserID = '';
-                                  token = '';
-                                  // _signOut();
-                                  logoutMessage();
+                                  passwordController.text = '';
+                                  password = '';
+                                  isLoggedIn = false;
                                 });
+                                prefs.setBool('isLoggedIn', isLoggedIn);
+                                logoutMessage();
                               },
                             ),
                             RoundedButton(
