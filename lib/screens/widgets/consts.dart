@@ -122,7 +122,13 @@ const kListingInputDecorationStyle = TextStyle(
   fontWeight:FontWeight.w500
 );
 
-const kLightRegularTextStyle = TextStyle(
+const kLightSize18RegularTextStyle = TextStyle(
+  fontWeight: FontWeight.w500,
+  fontSize: 18,
+  color: kLightTitleColor,
+);
+
+const kBlueSize18RegularTextStyle = TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 18,
   color: kLightTitleColor,

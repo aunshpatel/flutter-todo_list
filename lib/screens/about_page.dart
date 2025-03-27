@@ -55,7 +55,7 @@ class _AboutPageState extends State<AboutPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Flexible(
-                          child: Text("The Todo List is a leading application that specializes in helping its users to add, update and delete various daily tasks and ease their lives.", style: kLightRegularTextStyle),
+                          child: Text("The Todo List is a leading application that specializes in helping its users to add, update and delete various daily tasks and ease their lives.", style: kLightSize18RegularTextStyle),
                         )
                       ],
                     ),
