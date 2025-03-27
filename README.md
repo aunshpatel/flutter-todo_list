@@ -1,9 +1,14 @@
 # The Todo List
-A mobile application to complement the website created with MongoDB, Express.js, React.js, Node.js(MERN Stack), RestAPI and Firebase.
+A mobile application to complement the website created with MERN (MongoDB, Express.js, React.js, Node.js) Stack, RestAPI and Firebase.
 
-Link to the website: https://the-todo-list.onrender.com/
+## URLs:
+Website:  https://the-todo-list.onrender.com/
 
-Github repository link: https://github.com/aunshpatel/the_todo_list.git
+Website Github URL: https://github.com/aunshpatel/the_todo_list.git
+
+Mobile Application Github URL: https://github.com/aunshpatel/flutter-todo_list.git
+
+*Android & Apple Store URL Coming Soon*
 
 ## Getting Started
 Steps to run the project:
