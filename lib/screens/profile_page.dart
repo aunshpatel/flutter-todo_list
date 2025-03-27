@@ -7,6 +7,7 @@ import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
 import '../blocs/profile/profile_bloc.dart';
 import '../blocs/profile/profile_event.dart';
+import '../blocs/profile/profile_state.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -183,6 +184,65 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  /*void _updateProfile() {
+    final profileBloc = context.read<ProfileBloc>();
+
+    profileBloc.add(UpdateProfile(
+      username: usernameController.text.trim(),
+      fullname: fullnameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    ));
+  }*/
+
+  /*void _updateProfile() {
+    final profileBloc = context.read<ProfileBloc>();
+
+    profileBloc.add(UpdateProfile(
+      username: usernameController.text.trim(),
+      fullname: fullnameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    ));
+
+    // Listen for profile update state and show alert dialog accordingly
+    profileBloc.stream.listen((state) {
+      if (state is ProfileUpdated) {
+        commonAlertBox(context, 'SUCCESS!', 'Your profile has been updated successfully!');
+      } else if (state is ProfileUpdateFailed) {
+        commonAlertBox(context, 'ERROR!', 'Failed to update profile. Please try again.');
+      }
+    });
+  }*/
+
+  void _updateProfile() {
+    final profileBloc = context.read<ProfileBloc>();
+
+    profileBloc.add(UpdateProfile(
+      username: usernameController.text.trim(),
+      fullname: fullnameController.text.trim(),
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    ));
+
+    // Listen for profile update state and show alert dialog accordingly
+    profileBloc.stream.listen((state) {
+      if (state is ProfileUpdateSuccess) {
+        // prefs = await SharedPreferences.getInstance();
+        setState(() {
+          prefs.setString('email', usernameController.text.trim());
+          prefs.setString('name', fullnameController.text.trim());
+          prefs.setString('email', emailController.text.trim());
+          prefs.setString('password', passwordController.text.trim());
+        });
+        commonAlertBox(context, 'SUCCESS!', 'Your profile has been updated successfully!');
+      } else if (state is ProfileUpdateFailure) {
+        print('Error:${state.error}');
+        commonAlertBox(context, 'ERROR!', state.error);
+      }
+    });
+  }
+
   Future<void> _refresh() async {
     await Future.delayed(const Duration(seconds: 2));
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()),);
@@ -281,7 +341,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     RoundedButton(
                       colour:kLightTitleColor,
                       title:'Update Profile',
-                      onPress:null,
+                      onPress:() => _updateProfile(),
                     ),
                     const SizedBox(height:10),
                     Row(

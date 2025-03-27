@@ -26,7 +26,7 @@ class UserRepository{
   }
 
   // Update the user profile
-  Future<void> updateProfile(String username, String fullname, String email, String password) async {
+  /*Future<void> updateProfile(String username, String fullname, String email, String password) async {
     final response = await http.put(
       Uri.parse('$apiLinkConstant/user/update/$currentUserID'),
       body: {
@@ -39,6 +39,28 @@ class UserRepository{
 
     if (response.statusCode != 200) {
       throw Exception('Failed to update profile');
+    }
+  }*/
+
+  Future<void> updateProfile(String username, String fullname, String email, String password) async {
+    final response = await http.post(Uri.parse('$apiLinkConstant/user/update/$currentUserID'),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: jsonEncode({
+        "username": username,
+        "fullname": fullname,
+        "email": email,
+        "password": password,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      print("Profile updated successfully");
+    } else {
+      final errorMessage = jsonDecode(response.body)['message'] ?? "Failed to update profile";
+      throw Exception("Error: $errorMessage");
     }
   }
 

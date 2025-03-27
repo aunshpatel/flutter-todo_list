@@ -6,16 +6,16 @@ class LoadProfile extends ProfileEvent {
 }
 
 class UpdateProfile extends ProfileEvent {
-  final String userId;
   final String username;
   final String fullname;
   final String email;
+  final String password;
 
   UpdateProfile({
-    required this.userId,
     required this.username,
     required this.fullname,
     required this.email,
+    required this.password,
   });
 }
 
