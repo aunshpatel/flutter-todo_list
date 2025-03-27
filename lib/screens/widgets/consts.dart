@@ -137,7 +137,7 @@ const kBlueSize18Text = TextStyle(
 const kRedSize18Text = TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 18,
-  color: kThemeBlueColor,
+  color: kRedColor,
 );
 
 const kLightBoldSize18Text = TextStyle(
