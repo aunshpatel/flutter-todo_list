@@ -97,11 +97,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
-          title: const Text('SUCCESS!', style: kSideMenuBlueTextStyle),
+          title: const Text('SUCCESS!', style: kSideMenuBlueSize20Text),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(messageContent, style: kLightSemiBoldTextStyle),
+                Text(messageContent, style: kLightSemiBoldSize20Text),
               ],
             ),
           ),
@@ -125,11 +125,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
-          title: Text(messageTitle, style: kSideMenuBlueTextStyle),
+          title: Text(messageTitle, style: kSideMenuBlueSize20Text),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(messageBody, style: kDarkSemiBoldTextStyle),
+                Text(messageBody, style: kDarkSemiBoldSize16Text),
               ],
             ),
           ),
@@ -398,7 +398,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                     Row(
                       children: [
-                        const Text("By registering, you accept our", style: kRegularRedText),
+                        const Text("By registering, you accept our", style: kRegularRedSize15Text),
                         TextButton(
                           child: const Text('Privacy Policy'),
                           onPressed: () {

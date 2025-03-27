@@ -40,161 +40,161 @@ const kRegularText = TextStyle(
   fontSize: 15,
 );
 
-const kRegularBoldText = TextStyle(
+const kRegularBoldSize15Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 15,
 );
 
-const kRegularSemiBoldText = TextStyle(
+const kRegularSemiBoldSize15Text = TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 15,
 );
 
-const kSize18RegularText = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
+const kRegularSize18Text = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
 
-const kRegularTextStrike = TextStyle(
+const kRegularSize15TextStrike = TextStyle(
   fontWeight: FontWeight.normal,
   decoration: TextDecoration.lineThrough,
   fontSize: 15,
 );
 
-const kSemiBoldSize16Style = TextStyle(
-    fontSize: 16,
-    fontWeight:FontWeight.w500
+const kSemiBoldSize16Text = TextStyle(
+  fontSize: 16,
+  fontWeight:FontWeight.w500
 );
 
 //coloured text details
 
 const kHomePageTitle = TextStyle(fontSize: 30, color: kThemeBlueColor, fontWeight: FontWeight.w500);
 
-const kWhiteBoldRegularText = TextStyle(
+const kWhiteBoldSize15Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 15,
   color: Colors.white
 );
 
-const kRegularRedText = TextStyle(
+const kRegularRedSize15Text = TextStyle(
   fontWeight: FontWeight.normal,
   color: kContinueWithGoogleButton,
   fontSize: 15,
 );
 
-const kRedBoldRegularText = TextStyle(
+const kRedBoldSize15Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 15,
   color: kRedColor
 );
 
-const kSideMenuBlueSize16Style = TextStyle(
+const kSideMenuBlueSize16Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 16,
   color: kThemeBlueColor,
 );
 
-const kGreenBoldRegularText = TextStyle(
+const kGreenBoldSize16Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 16,
   color: Colors.green
 );
 
-const kSideMenuWhiteSize16Style = TextStyle(
+const kSideMenuWhiteSize16Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 16,
   color: kWhiteColor,
 );
 
-const kDarkSemiBoldTextStyle = TextStyle(
+const kDarkSemiBoldSize16Text = TextStyle(
   color: kDarkTitleColor,
   fontSize: 16,
   fontWeight:FontWeight.w500
 );
 
-const kUnderlineDarkSemiBoldTextStyle = TextStyle(
+const kUnderlineDarkSemiBoldSize16Text = TextStyle(
   color: kDarkTitleColor,
   decoration: TextDecoration.underline,
   fontSize: 16,
   fontWeight:FontWeight.w500
 );
 
-const kListingInputDecorationStyle = TextStyle(
+const kListingInputDecorationSize16Text = TextStyle(
   color: kThemeBlueColor,
   fontSize: 17,
   fontWeight:FontWeight.w500
 );
 
-const kLightSize18RegularTextStyle = TextStyle(
+const kLightSize18Text = TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 18,
   color: kLightTitleColor,
 );
 
-const kBlueSize18RegularTextStyle = TextStyle(
+const kBlueSize18Text = TextStyle(
   fontWeight: FontWeight.w500,
   fontSize: 18,
-  color: kLightTitleColor,
+  color: kThemeBlueColor,
 );
 
-const kLightBoldTextStyle = TextStyle(
+const kLightBoldSize18Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 18,
   color: kLightTitleColor,
 );
 
-const kWhiteBoldTextStyle = TextStyle(
+const kWhiteBoldSize18Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 18,
   color: kWhiteColor,
 );
 
-const kDarkBoldTextStyle = TextStyle(
+const kDarkBoldSize18Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 18,
   color: kDarkTitleColor,
 );
 
-const kBlueBoldTextStyle = TextStyle(
+const kBlueBoldSize20Text = TextStyle(
   color: kThemeBlueColor,
   fontSize: 20,
   fontWeight:FontWeight.bold
 );
 
-const kLightSemiBoldTextStyle = TextStyle(
+const kLightSemiBoldSize20Text = TextStyle(
   color: kLightTitleColor,
   fontSize: 20,
   fontWeight:FontWeight.w500
 );
 
-const kBlueSize20SemiBoldTextStyle = TextStyle(
+const kBlueSemiBoldSize20Text = TextStyle(
   color: kThemeBlueColor,
   fontSize: 20,
   fontWeight:FontWeight.w500
 );
 
-const kRedSize20SemiBoldTextStyle = TextStyle(
+const kRedSemiBoldSize20Text = TextStyle(
   color: kRedColor,
   fontSize: 20,
   fontWeight:FontWeight.w500
 );
 
-const kSideMenuLightTextStyle = TextStyle(
+const kSideMenuLightSize20Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20,
   color: kLightTitleColor,
 );
 
-const kWhiteText20Size = TextStyle(
+const kWhiteSize20Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20,
   color: kWhiteColor,
 );
 
-const kSideMenuWhiteTextStyle = TextStyle(
+const kSideMenuWhiteSize20Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20,
   color: kWhiteColor,
 );
 
-const kSideMenuBlueTextStyle = TextStyle(
+const kSideMenuBlueSize20Text = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20,
   color: kThemeBlueColor,
@@ -239,14 +239,14 @@ InputDecoration textInputDecoration(String labelText) {
     enabledBorder: kEnabledBorder,
     focusedBorder: kFocusedBorder,
     labelText: labelText,
-    labelStyle: kListingInputDecorationStyle,
+    labelStyle: kListingInputDecorationSize16Text,
   );
 }
 
 InputDecoration passwordInputDecoration(String labelText, bool passwordVisible, void Function() toggle){
   return InputDecoration(
     labelText: labelText,
-    labelStyle: kListingInputDecorationStyle,
+    labelStyle: kListingInputDecorationSize16Text,
     contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
     border: kBorder,
     enabledBorder: kEnabledBorder,
@@ -264,7 +264,7 @@ InputDecoration passwordInputDecoration(String labelText, bool passwordVisible, 
 InputDecoration listingInputDecoration(String labelText) {
   return InputDecoration(
     labelText: labelText,
-    labelStyle: kListingInputDecorationStyle,
+    labelStyle: kListingInputDecorationSize16Text,
     contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
     border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10.0)),
@@ -280,14 +280,14 @@ Future<void> commonAlertBox(BuildContext context, String title, String message) 
     barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog.adaptive(
-        title: Text(title, style: kSideMenuBlueTextStyle),
-        content: Text(message, style: kLightSemiBoldTextStyle),
+        title: Text(title, style: kSideMenuBlueSize20Text),
+        content: Text(message, style: kLightSemiBoldSize20Text),
         actions: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
-                child: const Text('OK', style: kLightSemiBoldTextStyle),
+                child: const Text('OK', style: kLightSemiBoldSize20Text),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },

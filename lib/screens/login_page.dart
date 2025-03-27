@@ -25,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
       barrierDismissible: false,
       builder: (context) {
         return AlertDialog.adaptive(
-          title: Text(title, style: kLightSemiBoldTextStyle,),
-          content: Text(message, style: kLightSemiBoldTextStyle,),
+          title: Text(title, style: kLightSemiBoldSize20Text,),
+          content: Text(message, style: kLightSemiBoldSize20Text,),
           actions: [
             TextButton(
               onPressed: () {
@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.pushReplacementNamed(context, '/home_page');
                 }
               },
-              child: Text('OK', style: kLightSemiBoldTextStyle,),
+              child: Text('OK', style: kLightSemiBoldSize20Text,),
             ),
           ],
         );
@@ -146,9 +146,9 @@ class _LoginPageState extends State<LoginPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("New User?", style: kLightSize18RegularTextStyle),
+                const Text("New User?", style: kLightSize18Text),
                 TextButton(
-                  child: const Text('Register Here', style: kBlueSize18RegularTextStyle,),
+                  child: const Text('Register Here', style: kBlueSize18Text,),
                   onPressed: () {
                     Navigator.pushNamed(context, '/registration_page');
                   },

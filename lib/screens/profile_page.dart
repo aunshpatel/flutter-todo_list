@@ -79,11 +79,11 @@ class _ProfilePageState extends State<ProfilePage> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog.adaptive(
-          title: Text(title, style: kBlueBoldTextStyle,),
-          content: Text(content, style: kLightSemiBoldTextStyle),
+          title: Text(title, style: kBlueBoldSize20Text,),
+          content: Text(content, style: kLightSemiBoldSize20Text),
           actions: <Widget>[
             TextButton(
-              child: const Text('OK', style: kLightSemiBoldTextStyle),
+              child: const Text('OK', style: kLightSemiBoldSize20Text),
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.pushReplacementNamed(context, '/home_page');
@@ -101,12 +101,12 @@ class _ProfilePageState extends State<ProfilePage> {
       barrierDismissible: false,
       builder: (context) {
         return AlertDialog.adaptive(
-          title: Text('LOGOUT?', style: kBlueBoldTextStyle,),
-          content: Text('Are you sure you want to logout?', style: kBlueSize20SemiBoldTextStyle,),
+          title: Text('LOGOUT?', style: kBlueBoldSize20Text,),
+          content: Text('Are you sure you want to logout?', style: kBlueSemiBoldSize20Text,),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: kBlueSize20SemiBoldTextStyle,),
+              child: Text('Cancel', style: kBlueSemiBoldSize20Text,),
             ),
             TextButton(
               onPressed: () async{
@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   messageAlertbox('SUCCESS!', 'You have logged out successfully! You will be redirected to home page now.');
                 }
               },
-              child: Text('Logout', style: kRedSize20SemiBoldTextStyle,),
+              child: Text('Logout', style: kRedSemiBoldSize20Text,),
             ),
           ],
         );
@@ -145,12 +145,12 @@ class _ProfilePageState extends State<ProfilePage> {
       barrierDismissible: false,
       builder: (context) {
         return AlertDialog.adaptive(
-          title: Text('DELETE PROFILE?', style: kBlueBoldTextStyle,),
-          content: Text('Are you sure you want to delete your profile? This action cannot be undone.', style: kBlueSize20SemiBoldTextStyle,),
+          title: Text('DELETE PROFILE?', style: kBlueBoldSize20Text,),
+          content: Text('Are you sure you want to delete your profile? This action cannot be undone.', style: kBlueSemiBoldSize20Text,),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Cancel', style: kBlueSize20SemiBoldTextStyle,),
+              child: Text('Cancel', style: kBlueSemiBoldSize20Text,),
             ),
             TextButton(
               onPressed: () async {
@@ -176,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   messageAlertbox('SUCCESS!', 'Your profile has been deleted successfully! You will be redirected to home page now.');
                 }
               },
-              child: Text('Delete', style: kRedSize20SemiBoldTextStyle,),
+              child: Text('Delete', style: kRedSemiBoldSize20Text,),
             ),
           ],
         );
@@ -289,7 +289,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           username = value;
                         });
                       },
-                      style: kLightSemiBoldTextStyle,
+                      style: kLightSemiBoldSize20Text,
                       decoration: textInputDecoration('Username',),
                     ),
                     const SizedBox(height:20),
@@ -300,7 +300,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           fullname = value;
                         });
                       },
-                      style: kLightSemiBoldTextStyle,
+                      style: kLightSemiBoldSize20Text,
                       decoration: textInputDecoration('Full Name',),
                     ),
                     const SizedBox(height:20),
@@ -312,7 +312,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           email = value;
                         });
                       },
-                      style: kLightSemiBoldTextStyle,
+                      style: kLightSemiBoldSize20Text,
                       decoration: textInputDecoration('Email',),
                     ),
                     const SizedBox(height:20),
@@ -324,7 +324,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           password = value;
                         });
                       },
-                      style: kLightSemiBoldTextStyle,
+                      style: kLightSemiBoldSize20Text,
                       decoration: passwordInputDecoration(
                         'Password',
                         _passwordVisible,
@@ -336,7 +336,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     const SizedBox(height:10),
-                    const Text("In case you do not see your password and want to update it, you can just enter the new password and press 'Update' button.", style: kRegularRedText),
+                    const Text("In case you do not see your password and want to update it, you can just enter the new password and press 'Update' button.", style: kRegularRedSize15Text),
                     const SizedBox(height:20),
                     RoundedButton(
                       colour:kLightTitleColor,

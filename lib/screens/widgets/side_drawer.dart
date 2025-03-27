@@ -41,7 +41,7 @@ class _SideDrawerState extends State<SideDrawer> {
                   ),
                 ),
                 child: ListTile(
-                  title: Text('Home Screen', style:kSideMenuWhiteTextStyle),
+                  title: Text('Home Screen', style:kSideMenuWhiteSize20Text),
                   onTap: (){
                     Navigator.pushNamed(context, '/home_page');
                   },
@@ -57,7 +57,7 @@ class _SideDrawerState extends State<SideDrawer> {
                   ),
                 ),
                 child: ListTile(
-                  title: Text('About Us', style:kSideMenuWhiteTextStyle),
+                  title: Text('About Us', style:kSideMenuWhiteSize20Text),
                   onTap: (){
                     Navigator.pushNamed(context, '/about_us');
                   },
@@ -74,7 +74,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   child: ListTile(
-                    title: Text('Login', style:kSideMenuWhiteTextStyle),
+                    title: Text('Login', style:kSideMenuWhiteSize20Text),
                     onTap: (){
                       Navigator.pushNamed(context, '/login_page');
                     },
@@ -90,7 +90,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   child: ListTile(
-                    title: Text('Registration', style:kSideMenuWhiteTextStyle),
+                    title: Text('Registration', style:kSideMenuWhiteSize20Text),
                     onTap: (){
                       Navigator.pushNamed(context, '/registration_page');
                     },
@@ -108,7 +108,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   child: ListTile(
-                    title: Text('Create A Todo', style:kSideMenuWhiteTextStyle),
+                    title: Text('Create A Todo', style:kSideMenuWhiteSize20Text),
                     onTap: (){
                       Navigator.pushNamed(context, '/create_todo_page');
                     },
@@ -124,7 +124,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   child: ListTile(
-                    title: Text('View Al Todo', style:kSideMenuWhiteTextStyle),
+                    title: Text('View Al Todo', style:kSideMenuWhiteSize20Text),
                     onTap: (){
                       Navigator.pushNamed(context, '/view_all_todos');
                     },
@@ -140,7 +140,7 @@ class _SideDrawerState extends State<SideDrawer> {
                     ),
                   ),
                   child: ListTile(
-                    title: Text('Profile', style:kSideMenuWhiteTextStyle),
+                    title: Text('Profile', style:kSideMenuWhiteSize20Text),
                     onTap: (){
                       Navigator.pushNamed(context, '/profile_page');
                     },
@@ -161,13 +161,13 @@ class _SideDrawerState extends State<SideDrawer> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextButton(
-                      child: const Text('Privacy Policy', style: kSideMenuWhiteSize16Style,),
+                      child: const Text('Privacy Policy', style: kSideMenuWhiteSize16Text,),
                       onPressed: () {
                         launchUrl(Uri.parse('https://realestate-vgcw.onrender.com/mobileapp-privacy-policy'));
                       },
                     ),
                     TextButton(
-                      child: Text('Contact Us', style: kSideMenuWhiteSize16Style,),
+                      child: Text('Contact Us', style: kSideMenuWhiteSize16Text,),
                       onPressed: () {
                         launchUrl(Uri.parse('https://the-todo-list.onrender.com/contact-us'));
                       },
