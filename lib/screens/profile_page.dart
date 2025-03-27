@@ -29,64 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
     loadDetails();
   }
 
-  /*loadDetails() async{
-    username = prefs!.getString('username')!;
-    usernameController.text = prefs!.getString('username')!;
-    email = prefs!.getString('email')!;
-    emailController.text = prefs!.getString('email')!;
-    passwordController.text = prefs!.getString('password') ?? '';
-    password = prefs!.getString('password') ?? '';
-    fullname = prefs!.getString('fullname')!;
-    fullnameController.text = prefs!.getString('fullname')!;
-    currentUserID = prefs!.getString('currentUserID')!;
-
-    final userProfile = await UserRepository.getUserProfile(currentUserID);
-    String userProfileUsername = userProfile?['username'];
-    String userProfileFullname = userProfile?['fullname'];
-    String userProfileEmail = userProfile?['email'];
-
-    if(username != userProfileUsername){
-      setState(() {
-        username = userProfileUsername;
-        usernameController.text = userProfileUsername;
-      });
-      prefs.setString('username', username);
-    } else if(username == userProfileUsername){
-      setState(() {
-        username = prefs!.getString('username')!;
-        usernameController.text = prefs!.getString('username')!;
-      });
-    }
-
-    if(fullname != userProfileUsername){
-      setState(() {
-        fullname = userProfileFullname;
-        fullnameController.text = userProfileFullname;
-      });
-      prefs.setString('username', username);
-    } else if(fullname == userProfileFullname){
-      setState(() {
-        fullname = prefs!.getString('username')!;
-        fullnameController.text = prefs!.getString('username')!;
-      });
-    }
-
-    if(email != userProfileEmail){
-      setState(() {
-        email = userProfileEmail;
-        emailController.text = userProfileEmail;
-      });
-      prefs.setString('email', email);
-    } else if(email == userProfileEmail){
-      setState(() {
-        emailController.text = prefs!.getString('email')!;
-        email = prefs!.getString('email')!;
-      });
-    }
-  }*/
-
   loadDetails() async {
-    // Load data from SharedPreferences
     username = prefs.getString('username') ?? '';
     usernameController.text = prefs.getString('username') ?? '';
     email = prefs.getString('email') ?? '';

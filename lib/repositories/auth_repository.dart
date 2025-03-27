@@ -4,7 +4,6 @@ import 'dart:convert';
 import '../screens/widgets/consts.dart';
 
 class AuthRepository {
-
   // Register Repository
   Future<void> registerUser({
     required String username,
@@ -14,7 +13,7 @@ class AuthRepository {
   }) async {
     try {
       final response = await http.post(
-        Uri.parse('$apiLinkConstant/auth/register'), // Adjust this endpoint based on your API
+        Uri.parse('$apiLinkConstant/auth/register'),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -37,31 +36,6 @@ class AuthRepository {
       rethrow;
     }
   }
-
-  //Login Repository
-  /*Future<bool> login(String email, String password) async {
-    try {
-      final response = await http.post(
-        Uri.parse('$apiLinkConstant/auth/login'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'email': email, 'password': password}),
-      );
-
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> responseData = jsonDecode(response.body);
-        if (responseData.isNotEmpty) {
-          await _saveUserData(responseData);
-          return true;
-        }
-        // return true;
-      } else {
-        return false;
-      }
-    } catch (e) {
-      print('Login error: $e');
-      return false;
-    }
-  }*/
 
   Future<bool> login(String email, String password) async {
     try {

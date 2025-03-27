@@ -4,9 +4,7 @@ import 'package:todo_list/screens/widgets/consts.dart';
 import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../blocs/registration/registration_bloc.dart';
-import '../repositories/auth_repository.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});

@@ -68,9 +68,9 @@ const kSemiBoldSize16Style = TextStyle(
 const kHomePageTitle = TextStyle(fontSize: 30, color: kThemeBlueColor, fontWeight: FontWeight.w500);
 
 const kWhiteBoldRegularText = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 15,
-    color: Colors.white
+  fontWeight: FontWeight.bold,
+  fontSize: 15,
+  color: Colors.white
 );
 
 const kRegularRedText = TextStyle(
@@ -80,9 +80,9 @@ const kRegularRedText = TextStyle(
 );
 
 const kRedBoldRegularText = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 15,
-    color: kRedColor
+  fontWeight: FontWeight.bold,
+  fontSize: 15,
+  color: kRedColor
 );
 
 const kSideMenuBlueSize16Style = TextStyle(
@@ -92,9 +92,9 @@ const kSideMenuBlueSize16Style = TextStyle(
 );
 
 const kGreenBoldRegularText = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-    color: Colors.green
+  fontWeight: FontWeight.bold,
+  fontSize: 16,
+  color: Colors.green
 );
 
 const kSideMenuWhiteSize16Style = TextStyle(
@@ -104,22 +104,22 @@ const kSideMenuWhiteSize16Style = TextStyle(
 );
 
 const kDarkSemiBoldTextStyle = TextStyle(
-    color: kDarkTitleColor,
-    fontSize: 16,
-    fontWeight:FontWeight.w500
+  color: kDarkTitleColor,
+  fontSize: 16,
+  fontWeight:FontWeight.w500
 );
 
 const kUnderlineDarkSemiBoldTextStyle = TextStyle(
-    color: kDarkTitleColor,
-    decoration: TextDecoration.underline,
-    fontSize: 16,
-    fontWeight:FontWeight.w500
+  color: kDarkTitleColor,
+  decoration: TextDecoration.underline,
+  fontSize: 16,
+  fontWeight:FontWeight.w500
 );
 
 const kListingInputDecorationStyle = TextStyle(
-    color: kThemeBlueColor,
-    fontSize: 17,
-    fontWeight:FontWeight.w500
+  color: kThemeBlueColor,
+  fontSize: 17,
+  fontWeight:FontWeight.w500
 );
 
 const kLightRegularTextStyle = TextStyle(
@@ -147,27 +147,27 @@ const kDarkBoldTextStyle = TextStyle(
 );
 
 const kBlueBoldTextStyle = TextStyle(
-    color: kThemeBlueColor,
-    fontSize: 20,
-    fontWeight:FontWeight.bold
+  color: kThemeBlueColor,
+  fontSize: 20,
+  fontWeight:FontWeight.bold
 );
 
 const kLightSemiBoldTextStyle = TextStyle(
-    color: kLightTitleColor,
-    fontSize: 20,
-    fontWeight:FontWeight.w500
+  color: kLightTitleColor,
+  fontSize: 20,
+  fontWeight:FontWeight.w500
 );
 
 const kBlueSize20SemiBoldTextStyle = TextStyle(
-    color: kThemeBlueColor,
-    fontSize: 20,
-    fontWeight:FontWeight.w500
+  color: kThemeBlueColor,
+  fontSize: 20,
+  fontWeight:FontWeight.w500
 );
 
 const kRedSize20SemiBoldTextStyle = TextStyle(
-    color: kRedColor,
-    fontSize: 20,
-    fontWeight:FontWeight.w500
+  color: kRedColor,
+  fontSize: 20,
+  fontWeight:FontWeight.w500
 );
 
 const kSideMenuLightTextStyle = TextStyle(

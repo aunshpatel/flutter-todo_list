@@ -88,35 +88,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-
-/*
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'The Todo List',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(0, 227, 231, 239)),
-        useMaterial3: false,
-      ),
-      initialRoute: '/home_page',
-      routes: {
-        '/home_page': (context) => const HomePage(),
-        '/about_us': (context) => const AboutPage(),
-        '/registration_page': (context) => BlocProvider(
-          create: (_) => RegistrationBloc(authRepository: AuthRepository()),
-          child: RegistrationScreen(),
-        ),
-        '/login_page': (context) => BlocProvider(
-          create: (_) => LoginBloc(authRepository: AuthRepository()),
-          child: LoginPage(),
-        ),
-      },
-    );
-  }
-}*/
