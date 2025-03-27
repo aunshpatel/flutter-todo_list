@@ -104,7 +104,6 @@ class _ProfilePageState extends State<ProfilePage> {
     String userProfileFullname = userProfile?['fullname'] ?? '';
     String userProfileEmail = userProfile?['email'] ?? '';
 
-    // Compare and update the profile details
     if (username != userProfileUsername) {
       setState(() {
         username = userProfileUsername;
@@ -230,8 +229,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   });
                   prefs.setBool('isLoggedIn', isLoggedIn);
 
-                  messageAlertbox('SUCCESS!',
-                      'Your profile has been deleted successfully! You will be redirected to home page now.');
+                  messageAlertbox('SUCCESS!', 'Your profile has been deleted successfully! You will be redirected to home page now.');
                 }
               },
               child: Text('Delete', style: kRedSize20SemiBoldTextStyle,),
@@ -250,147 +248,128 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-        canPop: false,
-        child: Scaffold(
-          endDrawerEnableOpenDragGesture: false,
-          drawer: const SideDrawer(),
-          appBar: AppBar(
-            leading: Builder(
-              builder: (BuildContext context) {
-                return IconButton(
-                  icon: const Icon(Icons.menu),
-                  color: kWhiteColor,
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-                );
-              },
-            ),
-            actions: <Widget>[],
-            centerTitle: true,
-            title: Text('Profile Page', style:TextStyle(color: kWhiteColor),),
-            backgroundColor: kThemeBlueColor,
+      canPop: false,
+      child: Scaffold(
+        endDrawerEnableOpenDragGesture: false,
+        drawer: const SideDrawer(),
+        appBar: AppBar(
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(Icons.menu),
+                color: kWhiteColor,
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
           ),
-          body: uploading == false ? RefreshIndicator(
-            onRefresh: _refresh,
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: usernameController,
-                          onChanged:(value){
-                            setState(() {
-                              username = value;
-                            });
-                          },
-                          style: kLightSemiBoldTextStyle,
-                          decoration: textInputDecoration('Username',),
-                        ),
-                        const SizedBox(height:20),
-                        TextField(
-                          controller: fullnameController,
-                          onChanged:(value){
-                            setState(() {
-                              fullname = value;
-                            });
-                          },
-                          style: kLightSemiBoldTextStyle,
-                          decoration: textInputDecoration('Full Name',),
-                        ),
-                        const SizedBox(height:20),
-                        TextField(
-                          controller: emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged:(value){
-                            setState(() {
-                              email = value;
-                            });
-                          },
-                          style: kLightSemiBoldTextStyle,
-                          decoration: textInputDecoration('Email',),
-                        ),
-                        const SizedBox(height:20),
-                        TextField(
-                          controller: passwordController,
-                          obscureText: _passwordVisible == false ? true : false,
-                          onChanged:(value){
-                            setState(() {
-                              password = value;
-                            });
-                          },
-                          style: kLightSemiBoldTextStyle,
-                          decoration: passwordInputDecoration(
-                              'Password',
-                              _passwordVisible,
-                                  (){
-                                setState(() {
-                                  _passwordVisible = !_passwordVisible;
-                                });
-                              }
-                          ),
-                        ),
-                        const SizedBox(height:10),
-                        const Text("In case you do not see your password and want to update it, you can just enter the new password and press 'Update' button.", style: kRegularRedText),
-                        const SizedBox(height:20),
-                        RoundedButton(
-                          colour:kLightTitleColor,
-                          title:'Update Profile',
-                          onPress:null,
-                        ),
-                        const SizedBox(height:10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            RoundedButton(
-                              colour:kThemeBlueColor,
-                              title:'Logout',
-                              onPress:() => _confirmLogout(context),
-                              /*onPress:() async {
-                                prefs = await SharedPreferences.getInstance();
-                                await prefs.clear();
-
-                                setState(() {
-                                  username = '';
-                                  usernameController.text = '';
-                                  email = '';
-                                  emailController.text = '';
-                                  fullname = '';
-                                  fullnameController.text = '';
-                                  currentUserID = '';
-                                  passwordController.text = '';
-                                  password = '';
-                                  isLoggedIn = false;
-                                });
-                                prefs.setBool('isLoggedIn', isLoggedIn);
-                                messageAlertbox('SUCCESS!', 'You have logged out successfully! You will be redirected to home page now.');
-                              },*/
-                            ),
-                            RoundedButton(
-                              colour:kRedColor,
-                              title:'Delete',
-                              onPress:() => _confirmDelete(context),
-                            ),
-                          ],
-                        )
-                      ],
+          actions: <Widget>[],
+          centerTitle: true,
+          backgroundColor: kThemeBlueColor,
+          title: Text('Profile Page', style:TextStyle(color: kWhiteColor),),
+        ),
+        body: uploading == false ? RefreshIndicator(
+          onRefresh: _refresh,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+              child: Center(
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: usernameController,
+                      onChanged:(value){
+                        setState(() {
+                          username = value;
+                        });
+                      },
+                      style: kLightSemiBoldTextStyle,
+                      decoration: textInputDecoration('Username',),
                     ),
-                  )
-              ),
-            ),
-          ) :
-          const Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(kLightTitleColor),
-              backgroundColor: Colors.transparent,
-              strokeWidth: 5,
+                    const SizedBox(height:20),
+                    TextField(
+                      controller: fullnameController,
+                      onChanged:(value){
+                        setState(() {
+                          fullname = value;
+                        });
+                      },
+                      style: kLightSemiBoldTextStyle,
+                      decoration: textInputDecoration('Full Name',),
+                    ),
+                    const SizedBox(height:20),
+                    TextField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      onChanged:(value){
+                        setState(() {
+                          email = value;
+                        });
+                      },
+                      style: kLightSemiBoldTextStyle,
+                      decoration: textInputDecoration('Email',),
+                    ),
+                    const SizedBox(height:20),
+                    TextField(
+                      controller: passwordController,
+                      obscureText: _passwordVisible == false ? true : false,
+                      onChanged:(value){
+                        setState(() {
+                          password = value;
+                        });
+                      },
+                      style: kLightSemiBoldTextStyle,
+                      decoration: passwordInputDecoration(
+                        'Password',
+                        _passwordVisible,
+                            (){
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        }
+                      ),
+                    ),
+                    const SizedBox(height:10),
+                    const Text("In case you do not see your password and want to update it, you can just enter the new password and press 'Update' button.", style: kRegularRedText),
+                    const SizedBox(height:20),
+                    RoundedButton(
+                      colour:kLightTitleColor,
+                      title:'Update Profile',
+                      onPress:null,
+                    ),
+                    const SizedBox(height:10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        RoundedButton(
+                          colour:kThemeBlueColor,
+                          title:'Logout',
+                          onPress:() => _confirmLogout(context),
+                        ),
+                        RoundedButton(
+                          colour:kRedColor,
+                          title:'Delete',
+                          onPress:() => _confirmDelete(context),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              )
             ),
           ),
-        )
+        ) :
+        const Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(kLightTitleColor),
+            backgroundColor: Colors.transparent,
+            strokeWidth: 5,
+          ),
+        ),
+      )
     );
   }
 }
