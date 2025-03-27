@@ -65,67 +65,75 @@ class _LoginPageState extends State<LoginPage> {
         title: Text('Login Screen', style: TextStyle(color: kWhiteColor)),
         backgroundColor: kThemeBlueColor,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(height: 15.0),
-            Flexible(
-              child: HeroLogo(
-                height: 250,
-                image: 'assets/images/todo-list-dark-theme-logo.png',
-                tag: 'photo',
-              ),
-            ),
-            SizedBox(height: 15.0),
-            TextField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: textInputDecoration('Enter your email'),
-            ),
-            SizedBox(height: 15.0),
-            TextField(
-              controller: passwordController,
-              obscureText: !_passwordVisible,
-              decoration: passwordInputDecoration(
-                'Enter your password',
-                _passwordVisible,
-                    () {
-                  setState(() {
-                    _passwordVisible = !_passwordVisible;
-                  });
-                },
-              ),
-            ),
-            SizedBox(height: 20),
-            BlocListener<LoginBloc, LoginState>(
-              listener: (context, state) {
-                if (state is LoginSuccess) {
-                  setState(() {
-                    showSpinner = false;
-                    isLoggedIn = true;
-                  });
-                  prefs.setBool('isLoggedIn', isLoggedIn);
-                  Future.delayed(Duration(milliseconds: 100), () {
-                    _showMessage('SUCCESS!', 'You have logged in successfully! Redirecting to home page.', true);
-                  });
-                } else if (state is LoginFailure) {
-                  setState(() {
-                    showSpinner = false;
-                    isLoggedIn = false;
-                  });
-                  prefs.setBool('isLoggedIn', isLoggedIn);
-                  Future.delayed(Duration(milliseconds: 100), () {
-                    _showMessage('WARNING!', 'Login failed, please try again.', false);
-                  });
-                }
-              },
-              child: BlocBuilder<LoginBloc, LoginState>(
-                builder: (context, state) {
-                  return showSpinner ? Center(child: CircularProgressIndicator())
-                  : RoundedButton(
+      body: BlocListener<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state is LoginSuccess) {
+            setState(() {
+              showSpinner = false;
+              isLoggedIn = true;
+            });
+            prefs.setBool('isLoggedIn', isLoggedIn);
+            Future.delayed(Duration(milliseconds: 100), () {
+              _showMessage('SUCCESS!', 'You have logged in successfully! Redirecting to home page.', true);
+            });
+          }
+          else if (state is LoginFailure) {
+            setState(() {
+              showSpinner = false;
+              isLoggedIn = false;
+            });
+            prefs.setBool('isLoggedIn', isLoggedIn);
+            Future.delayed(Duration(milliseconds: 100), () {
+              _showMessage('WARNING!', 'Login failed, please try again.', false);
+            });
+          }
+        },
+        child: BlocBuilder<LoginBloc, LoginState>(
+          builder: (context, state) {
+            return showSpinner ? Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(child: CircularProgressIndicator()),
+                SizedBox(height: 20,),
+                Text('LOGGING IN', style: kBlueBoldSize20Text,),
+              ],
+            ) : Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: 15.0),
+                  Flexible(
+                    child: HeroLogo(
+                      height: 250,
+                      image: 'assets/images/todo-list-dark-theme-logo.png',
+                      tag: 'photo',
+                    ),
+                  ),
+                  SizedBox(height: 15.0),
+                  TextField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: textInputDecoration('Enter your email'),
+                  ),
+                  SizedBox(height: 15.0),
+                  TextField(
+                    controller: passwordController,
+                    obscureText: !_passwordVisible,
+                    decoration: passwordInputDecoration(
+                      'Enter your password',
+                      _passwordVisible,
+                          () {
+                        setState(() {
+                          _passwordVisible = !_passwordVisible;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  RoundedButton(
                     colour: kThemeBlueColor,
                     title: 'Login',
                     onPress: () {
@@ -138,24 +146,23 @@ class _LoginPageState extends State<LoginPage> {
                         LoginSubmitted(email: email.trim(), password: password.trim()),
                       );
                     },
-                  );
-                },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("New User?", style: kLightSize18Text),
+                      TextButton(
+                        child: const Text('Register Here', style: kBlueSize18Text,),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/registration_page');
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("New User?", style: kLightSize18Text),
-                TextButton(
-                  child: const Text('Register Here', style: kBlueSize18Text,),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/registration_page');
-                  },
-                ),
-              ],
-            ),
-          ],
+            );
+          },
         ),
       ),
     );
