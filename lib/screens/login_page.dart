@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
@@ -65,7 +66,8 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: kThemeBlueColor,
       ),
       body: BlocListener<LoginBloc, LoginState>(
-        listener: (context, state) {
+        listener: (context, state) async {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
           if (state is LoginSuccess) {
             setState(() {
               showSpinner = false;

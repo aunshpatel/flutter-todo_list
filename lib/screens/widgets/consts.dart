@@ -50,7 +50,27 @@ const kRegularSemiBoldSize15Text = TextStyle(
   fontSize: 15,
 );
 
-const kRegularSize18Text = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
+const kSemiBoldSize18Text = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
+
+const kBoldSize18Text = TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+
+const kSemiBoldRedSize18Text = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w500,
+  color: Color(0XFFC10007)
+);
+
+const kSemiBoldYellowSize18Text = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w500,
+  color: Color(0XFFFD9A00)
+);
+
+const kSemiBoldGreenSize18Text = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w500,
+  color: Color(0XFF008236)
+);
 
 const kRegularSize15TextStrike = TextStyle(
   fontWeight: FontWeight.normal,

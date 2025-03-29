@@ -52,6 +52,7 @@ class AuthRepository {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print("responseData['_id']:${responseData['_id']}");
         prefs.setString('currentUserID', responseData['_id']);
+        currentUserID = responseData['_id'];
         prefs.setString('name', responseData['fullname']);
         prefs.setString('username', responseData['username']);
         prefs.setString('email', responseData['email']);
