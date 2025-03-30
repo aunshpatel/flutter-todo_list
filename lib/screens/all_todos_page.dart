@@ -81,6 +81,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
                 padding: const EdgeInsets.only(bottom: 24),
                 child: Column(
                   children: [
+                    //Filters
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 10, 8, 0),
                       child:  SizedBox(
@@ -200,6 +201,8 @@ class _AllTodosPageState extends State<AllTodosPage> {
                         ),
                       ),
                     ),
+
+                    //Data
                     Padding(
                       padding:  const EdgeInsets.fromLTRB(8, 10, 8, 0),
                       child: SizedBox(
@@ -207,89 +210,89 @@ class _AllTodosPageState extends State<AllTodosPage> {
                         child: Column(
                           children: [
                             Expanded(
-                                child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  shrinkWrap: true,
-                                  itemCount: state.todos.length,
-                                  itemBuilder: (context, index) {
-                                    final todo = state.todos[index];
-                                    return Card(
-                                      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                      elevation: 3,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(12.0),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    Text("${index + 1}) ", style: kBlueBoldSize20Text),
-                                                    SizedBox(width: 4),
-                                                    Text("Title: ${todo.title}", style: kBlueBoldSize20Text, softWrap: true),
-                                                  ],
-                                                ),
-                                                if(todo.allDay == true)...[
-                                                  Flexible(child: Text("All Day Event", style: kBlueBoldSize20Text)),
-                                                ]
-                                              ],
-                                            ),
-                                            const Divider(),
-                                            Row(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text("Description:", style: kBoldSize18Text),
-                                                SizedBox(width: 10,),
-                                                Flexible(
-                                                  child: Text(todo.description, style: kSemiBoldSize18Text),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(height: 10),
-                                            Row(
-                                              children: [
-                                                Text("From:", style: kBoldSize18Text),
-                                                SizedBox(width: 10,),
-                                                Text("${todo.startDate} ${todo.startTime}", style: kSemiBoldSize18Text),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10),
-                                            Row(
-                                              children: [
-                                                Text("To:", style: kBoldSize18Text),
-                                                SizedBox(width: 10,),
-                                                Text("${todo.endDate} ${todo.endTime}", style: kSemiBoldSize18Text),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10),
-                                            Row(
-                                              children: [
-                                                Text("Status:", style: kBoldSize18Text),
-                                                SizedBox(width: 10,),
-                                                Text(todo.status, style: kSemiBoldSize18Text),
-                                              ],
-                                            ),
-                                            SizedBox(height: 10),
-                                            Row(
-                                              children: [
-                                                Text("Priority:", style: kBoldSize18Text,),
-                                                SizedBox(width: 10,),
-                                                Text(
-                                                    todo.priority,
-                                                    style: todo.priority == 'Low' ? kSemiBoldGreenSize18Text : (todo.priority == 'Medium' ? kSemiBoldYellowSize18Text : kSemiBoldRedSize18Text)
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemCount: state.todos.length,
+                                itemBuilder: (context, index) {
+                                  final todo = state.todos[index];
+                                  return Card(
+                                    margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    elevation: 3,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Text("${index + 1}) ", style: kBlueBoldSize20Text),
+                                                  SizedBox(width: 4),
+                                                  Text("Title: ${todo.title}", style: kBlueBoldSize20Text, softWrap: true),
+                                                ],
+                                              ),
+                                              if(todo.allDay == true)...[
+                                                Flexible(child: Text("All Day Event", style: kBlueBoldSize20Text)),
+                                              ]
+                                            ],
+                                          ),
+                                          const Divider(),
+                                          Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text("Description:", style: kBoldSize18Text),
+                                              SizedBox(width: 10,),
+                                              Flexible(
+                                                child: Text(todo.description, style: kSemiBoldSize18Text),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Text("From:", style: kBoldSize18Text),
+                                              SizedBox(width: 10,),
+                                              Text("${todo.startDate} ${todo.startTime}", style: kSemiBoldSize18Text),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Text("To:", style: kBoldSize18Text),
+                                              SizedBox(width: 10,),
+                                              Text("${todo.endDate} ${todo.endTime}", style: kSemiBoldSize18Text),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Text("Status:", style: kBoldSize18Text),
+                                              SizedBox(width: 10,),
+                                              Text(todo.status, style: kSemiBoldSize18Text),
+                                            ],
+                                          ),
+                                          SizedBox(height: 10),
+                                          Row(
+                                            children: [
+                                              Text("Priority:", style: kBoldSize18Text,),
+                                              SizedBox(width: 10,),
+                                              Text(
+                                                  todo.priority,
+                                                  style: todo.priority == 'Low' ? kSemiBoldGreenSize18Text : (todo.priority == 'Medium' ? kSemiBoldYellowSize18Text : kSemiBoldRedSize18Text)
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                    );
-                                  },
-                                )
+                                    ),
+                                  );
+                                },
+                              )
                             ),
                           ],
                         ),
