@@ -48,6 +48,7 @@ class TodoFailure extends TodoState {
 class TodoDeleted extends TodoState {}
 */
 
+/*
 part of 'todo_bloc.dart';
 
 @immutable
@@ -73,4 +74,66 @@ class TodoError extends TodoState {
   final String error;
 
   TodoError({required this.error});
+}
+*/
+
+part of 'todo_bloc.dart';
+
+@immutable
+abstract class TodoState {}
+
+class TodoInitial extends TodoState {}
+
+class TodoLoading extends TodoState {}
+
+class TodoLoaded extends TodoState {
+  final List<Todo> todos;
+  final TodoFilters filters;
+
+  TodoLoaded({required this.todos, required this.filters});
+}
+
+class TodoCreated extends TodoState {
+  final Todo todo;
+
+  TodoCreated({required this.todo});
+}
+
+class TodoError extends TodoState {
+  final String error;
+
+  TodoError({required this.error});
+}
+
+// Model for Filters
+class TodoFilters {
+  final String status;
+  final String priority;
+  final String startDateOrder;
+  final String statusOrder;
+  final String priorityOrder;
+
+  const TodoFilters({
+    this.status = "",
+    this.priority = "",
+    this.startDateOrder = "",
+    this.statusOrder = "",
+    this.priorityOrder = "",
+  });
+
+  TodoFilters copyWith({
+    String? status,
+    String? priority,
+    String? startDateOrder,
+    String? statusOrder,
+    String? priorityOrder,
+  }) {
+    return TodoFilters(
+      status: status ?? this.status,
+      priority: priority ?? this.priority,
+      startDateOrder: startDateOrder ?? this.startDateOrder,
+      statusOrder: statusOrder ?? this.statusOrder,
+      priorityOrder: priorityOrder ?? this.priorityOrder,
+    );
+  }
 }

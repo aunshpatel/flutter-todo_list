@@ -15,7 +15,7 @@ class DeleteTodo extends TodoEvent {
 }
 */
 
-part of 'todo_bloc.dart';
+/*part of 'todo_bloc.dart';
 
 @immutable
 abstract class TodoEvent {}
@@ -27,4 +27,21 @@ class CreateTodoEvent extends TodoEvent {
   final Todo todo;
 
   CreateTodoEvent({required this.todo});
+}*/
+
+part of 'todo_bloc.dart';
+
+@immutable
+abstract class TodoEvent {}
+
+class GetTodosEvent extends TodoEvent {}
+
+class CreateTodoEvent extends TodoEvent {
+  final Todo todo;
+  CreateTodoEvent({required this.todo});
+}
+
+class UpdateFiltersEvent extends TodoEvent {
+  final TodoFilters filters;
+  UpdateFiltersEvent(this.filters);
 }
