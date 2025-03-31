@@ -14,8 +14,6 @@ class CreateATodo extends StatefulWidget {
 }
 
 class _CreateATodoState extends State<CreateATodo> {
-  // final _formKey = GlobalKey<FormState>();
-
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _startDateController = TextEditingController();
@@ -171,172 +169,6 @@ class _CreateATodoState extends State<CreateATodo> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
-          /*child: ListView(
-          children: [
-            //Title
-            TextFormField(
-              controller: _titleController,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: 'Title',
-                filled:true,
-                prefixIcon: Icon(Icons.title),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kThemeBlueColor)
-                ),
-              ),
-              validator: (value) => value?.isEmpty ?? true ? 'Please enter a title' : null,
-            ),
-            SizedBox(height: 10),
-            // Description
-            TextFormField(
-              controller: _descriptionController,
-              keyboardType: TextInputType.multiline,
-              maxLines: 6,
-              decoration: InputDecoration(
-                labelText: 'Description',
-                filled:true,
-                prefixIcon: Icon(Icons.description),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kThemeBlueColor)
-                ),
-              ),
-              // validator: (value) => value?.isEmpty ?? true ? 'Please enter a description' : null,
-            ),
-            SizedBox(height: 10),
-            // Start Date
-            TextField(
-              controller: _startDateController,
-              readOnly: true,
-              decoration: InputDecoration(
-                labelText: 'Start Date',
-                filled:true,
-                prefixIcon: Icon(Icons.calendar_today_sharp),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kThemeBlueColor)
-                ),
-              ),
-              onTap: (){
-                _selectStartDate();
-              },
-            ),
-            SizedBox(height: 10),
-            // Start Time
-            TextFormField(
-              controller: _startTimeController,
-              decoration: InputDecoration(
-                labelText: 'Start Time',
-                filled:true,
-                prefixIcon: Icon(Icons.access_time_rounded),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kThemeBlueColor)
-                ),
-              ),
-              // validator: (value) => value?.isEmpty ?? true ? 'Please enter a valid start time' : null,
-            ),
-            SizedBox(height: 10),
-            // End Date
-            TextField(
-              controller: _endDateController,
-              readOnly: true,
-              decoration: InputDecoration(
-                labelText: 'End Date',
-                filled:true,
-                prefixIcon: Icon(Icons.calendar_today_sharp),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kThemeBlueColor)
-                )
-              ),
-              onTap: (){
-                _selectEndDate();
-              },
-            ),
-            SizedBox(height: 10),
-            // End Time
-            TextFormField(
-              controller: _endTimeController,
-              decoration: InputDecoration(
-                labelText: 'End Time',
-                filled:true,
-                prefixIcon: Icon(Icons.access_time_rounded),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: kThemeBlueColor)
-                ),
-              ),
-              validator: (value) => value?.isEmpty ?? true ? 'Please enter a valid end time' : null,
-            ),
-            SizedBox(height: 10),
-            // All Day Checkbox
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Checkbox(
-                  value: _allDay,
-                  onChanged: (value) {
-                    setState(() {
-                      _allDay = value!;
-                    });
-                  },
-                ),
-                Text("All Day"),
-              ],
-            ),
-            SizedBox(height: 10),
-            // Status Dropdown
-            DropdownButtonFormField<String>(
-              value: _status,
-              decoration: InputDecoration(labelText: "Status"),
-              onChanged: (value) {
-                setState(() {
-                  _status = value!;
-                });
-              },
-              items: ['Pending', 'In-Progress', 'Completed'].map((status) => DropdownMenuItem(
-                value: status,
-                child: Text(status),
-              )).toList(),
-            ),
-            SizedBox(height: 10),
-            // Priority Dropdown
-            DropdownButtonFormField<String>(
-              value: _priority,
-              decoration: InputDecoration(labelText: "Priority"),
-              onChanged: (value) {
-                setState(() {
-                  _priority = value!;
-                });
-              },
-              items: ['Low', 'Medium', 'High'].map((priority) => DropdownMenuItem(
-                value: priority,
-                child: Text(priority),
-              )).toList(),
-            ),
-            SizedBox(height: 10),
-            // Submit Button
-            ElevatedButton(
-              onPressed: _submitForm,
-              child: Text("Create Todo"),
-            ),
-          ],
-        ),*/
           child: ListView(
             children: [
               // Title
@@ -515,16 +347,8 @@ class _CreateATodoState extends State<CreateATodo> {
     );
   }
 
-  /*void _submitForm() {
-    final todo = Todo(title: _titleController.text, description: _descriptionController.text, startDate: _startDateController.text, endDate: _endDateController.text, startTime: _startTimeController.text, endTime: _endTimeController.text, status: _status, priority: _priority, allDay: _allDay, userRef: currentUserID);
-
-    BlocProvider.of<TodoBloc>(context).add(CreateTodoEvent(todo: todo));
-    Navigator.pop(context);
-  }*/
-
   void _submitForm() {
     final todo = Todo(title: _titleController.text, description: _descriptionController.text, startDate: _startDateController.text, endDate: _endDateController.text, startTime: _startTimeController.text, endTime: _endTimeController.text, status: _status, priority: _priority, allDay: _allDay, userRef: currentUserID);
-
     BlocProvider.of<TodoBloc>(context).add(CreateTodoEvent(todo: todo));
   }
 }

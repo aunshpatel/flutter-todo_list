@@ -1,29 +1,3 @@
-/*
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import '../screens/widgets/consts.dart';
-
-class TodoRepositories{
-  Future<Map<String, String>> getAllTodos() async {
-    final response = await http.get(Uri.parse('$apiLinkConstant/user/get-user/$currentUserID'));
-    if (response.statusCode == 200) {
-      // Assuming the response is a list, we'll grab the first element
-      Map<String, dynamic> userProfile = json.decode(response.body);
-      if (userProfile.isNotEmpty) {
-        return {
-          'username': userProfile['username'],
-          'fullname': userProfile['fullname'],
-          'email': userProfile['email'],
-        };
-      } else {
-        throw Exception('User not found');
-      }
-    } else {
-      throw Exception('Failed to load profile');
-    }
-  }
-}*/
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:todo_list/models/todo_model.dart';
