@@ -31,6 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   loadDetails() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     username = prefs.getString('username') ?? '';
     usernameController.text = prefs.getString('username') ?? '';
     email = prefs.getString('email') ?? '';
