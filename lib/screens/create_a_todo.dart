@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
+import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
 import '../blocs/todo/todo_bloc.dart';
 import '../models/todo_model.dart';
@@ -172,11 +173,13 @@ class _CreateATodoState extends State<CreateATodo> {
           child: ListView(
             children: [
               // Title
+              SizedBox(height: 10),
               TextFormField(
                 controller: _titleController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   labelText: 'Title',
+                  labelStyle: kSideMenuBlueSize16Text,
                   filled: true,
                   prefixIcon: Icon(Icons.title),
                   enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
@@ -193,11 +196,13 @@ class _CreateATodoState extends State<CreateATodo> {
                 maxLines: 6,
                 decoration: InputDecoration(
                   labelText: 'Description',
+                  labelStyle: kSideMenuBlueSize16Text,
                   filled: true,
                   prefixIcon: Icon(Icons.description),
                   enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
                   focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: kThemeBlueColor)),
                 ),
+                validator: (value) => value?.isEmpty ?? true ? 'Please enter a description' : null,
               ),
               SizedBox(height: 10),
 
@@ -206,11 +211,12 @@ class _CreateATodoState extends State<CreateATodo> {
                 children: [
                   // Start Date
                   Expanded(
-                    child: TextField(
+                    child: TextFormField(
                       controller: _startDateController,
                       readOnly: true,
                       decoration: InputDecoration(
                         labelText: 'Start Date',
+                        labelStyle: kSideMenuBlueSize16Text,
                         filled: true,
                         prefixIcon: Icon(Icons.calendar_today_sharp),
                         enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
@@ -219,9 +225,10 @@ class _CreateATodoState extends State<CreateATodo> {
                       onTap: () {
                         _selectStartDate();
                       },
+                      validator: (value) => value?.isEmpty ?? true ? 'Please select a start date' : null,
                     ),
                   ),
-                  SizedBox(width: 10),
+                  SizedBox(width: 20),
                   //Start Time
                   Expanded(
                     child: TextFormField(
@@ -230,8 +237,10 @@ class _CreateATodoState extends State<CreateATodo> {
                       onTap: _allDay ? null : () {
                         _selectStartTime(context);
                       },
+                      validator: (value) => value?.isEmpty ?? true ? 'Please select a start time' : null,
                       decoration: InputDecoration(
                         labelText: 'Start Time',
+                        labelStyle: kSideMenuBlueSize16Text,
                         filled: true,
                         prefixIcon: Icon(Icons.access_time_rounded),
                         enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
@@ -248,22 +257,24 @@ class _CreateATodoState extends State<CreateATodo> {
                 children: [
                   // End Date
                   Expanded(
-                    child: TextField(
+                    child: TextFormField(
                       controller: _endDateController,
                       readOnly: true,
                       decoration: InputDecoration(
                         labelText: 'End Date',
+                        labelStyle: kSideMenuBlueSize16Text,
                         filled: true,
                         prefixIcon: Icon(Icons.calendar_today_sharp),
                         enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
                         focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: kThemeBlueColor)),
                       ),
+                      validator: (value) => value?.isEmpty ?? true ? 'Please select an end date' : null,
                       onTap: () {
                         _selectEndDate();
                       },
                     ),
                   ),
-                  SizedBox(width: 10),
+                  SizedBox(width: 20),
                   // End Time
                   Expanded(
                     child: TextFormField(
@@ -274,12 +285,13 @@ class _CreateATodoState extends State<CreateATodo> {
                       },
                       decoration: InputDecoration(
                         labelText: 'End Time',
+                        labelStyle: kSideMenuBlueSize16Text,
                         filled: true,
                         prefixIcon: Icon(Icons.access_time_rounded),
                         enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
                         focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: kThemeBlueColor)),
                       ),
-                      validator: (value) => value?.isEmpty ?? true ? 'Please enter a valid end time' : null,
+                      validator: (value) => value?.isEmpty ?? true ? 'Please select an end time' : null,
                     ),
                   ),
                 ],
@@ -309,48 +321,54 @@ class _CreateATodoState extends State<CreateATodo> {
                       });
                     },
                   ),
-                  Text("All Day"),
+                  Text("All Day Event", style: kBlueSize18Text,),
                 ],
               ),
               SizedBox(height: 10),
 
-              // Status Dropdown
-              DropdownButtonFormField<String>(
-                value: _status,
-                decoration: InputDecoration(labelText: "Status"),
-                onChanged: (value) {
-                  setState(() {
-                    _status = value!;
-                  });
-                },
-                items: ['Pending', 'In-Progress', 'Completed'].map((status) => DropdownMenuItem(
-                  value: status,
-                  child: Text(status),
-                )).toList(),
+              Row(
+                children: [
+                  // Status Dropdown
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      value: _status,
+                      decoration: InputDecoration(labelText: "Status", labelStyle: kSideMenuBlueSize16Text),
+                      onChanged: (value) {
+                        setState(() {
+                          _status = value!;
+                        });
+                      },
+                      items: ['Pending', 'In-Progress', 'Completed'].map((status) => DropdownMenuItem(
+                        value: status,
+                        child: Text(status, style: kSideMenuBlueSize16Text),
+                      )).toList(),
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  // Priority Dropdown
+                  Expanded(
+                    child: DropdownButtonFormField<String>(
+                      value: _priority,
+                      decoration: InputDecoration(labelText: "Priority", labelStyle: kSideMenuBlueSize16Text),
+                      onChanged: (value) {
+                        setState(() {
+                          _priority = value!;
+                        });
+                      },
+                      items: ['Low', 'Medium', 'High'].map((priority) => DropdownMenuItem(
+                        value: priority,
+                        child: Text(priority, style: kSideMenuBlueSize16Text),
+                      )).toList(),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 10),
-
-              // Priority Dropdown
-              DropdownButtonFormField<String>(
-                value: _priority,
-                decoration: InputDecoration(labelText: "Priority"),
-                onChanged: (value) {
-                  setState(() {
-                    _priority = value!;
-                  });
-                },
-                items: ['Low', 'Medium', 'High'].map((priority) => DropdownMenuItem(
-                  value: priority,
-                  child: Text(priority),
-                )).toList(),
-              ),
-              SizedBox(height: 10),
-
-              // Submit Button
-              ElevatedButton(
-                onPressed: _submitForm,
-                child: Text("Create Todo"),
-              ),
+              RoundedButton(
+                title: 'Create Todo',
+                colour: kThemeBlueColor,
+                onPress: _submitForm,
+              )
             ],
           ),
         ),
