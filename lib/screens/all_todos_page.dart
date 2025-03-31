@@ -225,22 +225,47 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Row(
+                                          /*Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Text("${index + 1}) ", style: kBlueBoldSize20Text),
-                                                  SizedBox(width: 4),
-                                                  Text("Title: ${todo.title}", style: kBlueBoldSize20Text, softWrap: true),
+                                                  // SizedBox(width: 4),
+                                                  Flexible(child: Text("Title: ${todo.title}", style: kBlueBoldSize20Text)),
                                                 ],
                                               ),
                                               if(todo.allDay == true)...[
                                                 Flexible(child: Text("All Day Event", style: kBlueBoldSize20Text)),
                                               ]
                                             ],
+                                          ),*/
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded( // ✅ Ensures text doesn't overflow and wraps properly
+                                                child: Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.start, // ✅ Align text properly if it wraps
+                                                  children: [
+                                                    Text("${index + 1}) ", style: kBlueBoldSize20Text),
+                                                    SizedBox(width: 4),
+                                                    Expanded( // ✅ Allows title to take available space and wrap
+                                                      child: Text(
+                                                        "Title: ${todo.title}",
+                                                        style: kBlueBoldSize20Text,
+                                                        softWrap: true, // ✅ Allows text to wrap to the next line
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              if (todo.allDay == true) ...[
+                                                Text("All Day Event", style: kBlueBoldSize20Text),
+                                              ]
+                                            ],
                                           ),
+
                                           const Divider(),
                                           Row(
                                             crossAxisAlignment: CrossAxisAlignment.start,
