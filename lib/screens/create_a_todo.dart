@@ -227,7 +227,7 @@ class _CreateATodoState extends State<CreateATodo> {
                     child: TextFormField(
                       controller: _startTimeController,
                       readOnly: true,
-                      onTap: () {
+                      onTap: _allDay ? null : () {
                         _selectStartTime(context);
                       },
                       decoration: InputDecoration(
@@ -269,7 +269,7 @@ class _CreateATodoState extends State<CreateATodo> {
                     child: TextFormField(
                       controller: _endTimeController,
                       readOnly: true,
-                      onTap: () {
+                      onTap: _allDay ? null : () {
                         _selectEndTime(context);
                       },
                       decoration: InputDecoration(
@@ -295,6 +295,17 @@ class _CreateATodoState extends State<CreateATodo> {
                     onChanged: (value) {
                       setState(() {
                         _allDay = value!;
+                        if(_allDay) {
+                          _startTimeController.text = '12:00 AM';
+                          selectedStartTime = TimeOfDay(hour: 00, minute: 00);
+                          _endTimeController.text = '11:59 PM';
+                          selectedEndTime = TimeOfDay(hour: 23, minute: 59);
+                        } else {
+                          _startTimeController.text = '';
+                          selectedStartTime = TimeOfDay.now();
+                          _endTimeController.text = '';
+                          selectedEndTime = TimeOfDay.now();
+                        }
                       });
                     },
                   ),
