@@ -110,7 +110,7 @@ class _SideDrawerState extends State<SideDrawer> {
                   child: ListTile(
                     title: Text('Create A Todo', style:kSideMenuWhiteSize20Text),
                     onTap: (){
-                      Navigator.pushNamed(context, '/create_todo_page');
+                      Navigator.pushNamed(context, '/create_a_todo');
                     },
                   ),
                 ),

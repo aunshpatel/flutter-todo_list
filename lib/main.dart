@@ -201,6 +201,7 @@ import 'package:todo_list/repositories/todo_repositories.dart';
 import 'package:todo_list/repositories/user_repositories.dart';
 import 'package:todo_list/screens/about_page.dart';
 import 'package:todo_list/screens/all_todos_page.dart';
+import 'package:todo_list/screens/create_a_todo.dart';
 import 'package:todo_list/screens/home_page.dart';
 import 'package:todo_list/screens/login_page.dart';
 import 'package:todo_list/screens/profile_page.dart';
@@ -220,6 +221,9 @@ void main() {
         ),
         BlocProvider(
           create: (context) => TodoBloc(todoRepository: TodoRepository()), // TodoBloc Provider
+        ),
+        BlocProvider(
+          create: (context) => TodoBloc(todoRepository: TodoRepository()),
         ),
       ],
       child: MyApp(),
@@ -286,7 +290,8 @@ class _MyAppState extends State<MyApp> {
           create: (_) => ProfileBloc(userRepository: UserRepository()),
           child: ProfilePage(),
         ),
-        '/view_all_todos': (context) => AllTodosPage(), // Added TodoPage route
+        '/view_all_todos': (context) => AllTodosPage(),
+        '/create_a_todo': (context) => CreateATodo(),
       },
     );
   }
