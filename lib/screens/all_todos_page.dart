@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list/blocs/todo/todo_bloc.dart';
-import 'package:todo_list/models/todo_model.dart';
 import 'package:todo_list/screens/widgets/consts.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
 import 'package:sticky_headers/sticky_headers.dart';
@@ -225,22 +224,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          /*Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text("${index + 1}) ", style: kBlueBoldSize20Text),
-                                                  // SizedBox(width: 4),
-                                                  Flexible(child: Text("Title: ${todo.title}", style: kBlueBoldSize20Text)),
-                                                ],
-                                              ),
-                                              if(todo.allDay == true)...[
-                                                Flexible(child: Text("All Day Event", style: kBlueBoldSize20Text)),
-                                              ]
-                                            ],
-                                          ),*/
+                                          // Title & All Day Event
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
@@ -265,8 +249,8 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                               ]
                                             ],
                                           ),
-
                                           const Divider(),
+                                          //Description
                                           Row(
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
@@ -278,6 +262,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                             ],
                                           ),
                                           SizedBox(height: 10),
+                                          // Start Date & Time
                                           Row(
                                             children: [
                                               Text("From:", style: kBoldSize18Text),
@@ -286,6 +271,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                             ],
                                           ),
                                           SizedBox(height: 10),
+                                          // End Date & Time
                                           Row(
                                             children: [
                                               Text("To:", style: kBoldSize18Text),
@@ -294,6 +280,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                             ],
                                           ),
                                           SizedBox(height: 10),
+                                          // Status
                                           Row(
                                             children: [
                                               Text("Status:", style: kBoldSize18Text),
@@ -302,6 +289,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                             ],
                                           ),
                                           SizedBox(height: 10),
+                                          // Priority
                                           Row(
                                             children: [
                                               Text("Priority:", style: kBoldSize18Text,),
