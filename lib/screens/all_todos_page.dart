@@ -300,6 +300,42 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                               ),
                                             ],
                                           ),
+                                          SizedBox(height: 20),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              TextButton(
+                                                style: ButtonStyle(
+                                                  shape: WidgetStateProperty.all(
+                                                    RoundedRectangleBorder(
+                                                      side: const BorderSide(
+                                                        color: Colors.green,
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius: BorderRadius.circular(0)
+                                                    )
+                                                  )
+                                                ),
+                                                onPressed: null,
+                                                child: const Text('EDIT', style: kSemiBoldGreenSize18Text,),
+                                              ),
+                                              TextButton(
+                                                style: ButtonStyle(
+                                                  shape: WidgetStateProperty.all(
+                                                    RoundedRectangleBorder(
+                                                      side: const BorderSide(
+                                                        color: Colors.red,
+                                                        width: 1,
+                                                      ),
+                                                      borderRadius: BorderRadius.circular(0)
+                                                    )
+                                                  )
+                                                ),
+                                                onPressed: null,
+                                                child: Text('DELETE', style: kRedSize18Text),
+                                              ),
+                                            ],
+                                          )
                                         ],
                                       ),
                                     ),
