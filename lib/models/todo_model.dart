@@ -1,4 +1,5 @@
 class Todo {
+  final String? id;
   final String title;
   final String description;
   final String startDate;
@@ -11,6 +12,7 @@ class Todo {
   final String userRef;
 
   Todo({
+    this.id,
     required this.title,
     required this.description,
     required this.startDate,
@@ -25,6 +27,7 @@ class Todo {
 
   factory Todo.fromJson(Map<String, dynamic> json) {
     return Todo(
+      id: json['_id'],
       title: json['title'],
       description: json['description'],
       startDate: json['startDate'],
