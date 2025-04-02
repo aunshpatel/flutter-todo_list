@@ -28,6 +28,16 @@ class _AllTodosPageState extends State<AllTodosPage> {
     _todoBloc.add(GetTodosEvent()); // Fetch todos when page loads
   }
 
+  Future<void> _refreshData() async {
+    // Simulate network delay
+    await Future.delayed(Duration(seconds: 2));
+
+    // Example logic for refreshing data (you can replace this with your actual data fetching logic)
+    setState(() {
+
+    });
+  }
+
   void _updateFilter(String key, String value) {
     final currentState = _todoBloc.state;
     if (currentState is TodoLoaded) {
@@ -253,140 +263,143 @@ class _AllTodosPageState extends State<AllTodosPage> {
                           child: Column(
                             children: [
                               Expanded(
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.vertical,
-                                    shrinkWrap: true,
-                                    itemCount: state.todos.length,
-                                    itemBuilder: (context, index) {
-                                      final todo = state.todos[index];
-                                      return Card(
-                                        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                        elevation: 3,
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(12.0),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              // Title & All Day Event
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Expanded( // ✅ Ensures text doesn't overflow and wraps properly
-                                                    child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.start, // ✅ Align text properly if it wraps
-                                                      children: [
-                                                        Text("${index + 1}) ", style: kBlueBoldSize20Text),
-                                                        SizedBox(width: 4),
-                                                        Expanded( // ✅ Allows title to take available space and wrap
-                                                          child: Text(
-                                                            "Title: ${todo.title}",
-                                                            style: kBlueBoldSize20Text,
-                                                            softWrap: true, // ✅ Allows text to wrap to the next line
+                                  child: RefreshIndicator.adaptive(
+                                    onRefresh: _refreshData,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemCount: state.todos.length,
+                                      itemBuilder: (context, index) {
+                                        final todo = state.todos[index];
+                                        return Card(
+                                          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                          elevation: 3,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(12.0),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                // Title & All Day Event
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Expanded( // ✅ Ensures text doesn't overflow and wraps properly
+                                                      child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.start, // ✅ Align text properly if it wraps
+                                                        children: [
+                                                          Text("${index + 1}) ", style: kBlueBoldSize20Text),
+                                                          SizedBox(width: 4),
+                                                          Expanded( // ✅ Allows title to take available space and wrap
+                                                            child: Text(
+                                                              "Title: ${todo.title}",
+                                                              style: kBlueBoldSize20Text,
+                                                              softWrap: true, // ✅ Allows text to wrap to the next line
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                  if (todo.allDay == true) ...[
-                                                    Text("All Day Event", style: kBlueBoldSize20Text),
-                                                  ]
-                                                ],
-                                              ),
-                                              const Divider(),
-                                              //Description
-                                              Row(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Text("Description:", style: kBoldSize18Text),
-                                                  SizedBox(width: 10,),
-                                                  Flexible(
-                                                    child: Text(todo.description, style: kSemiBoldSize18Text),
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(height: 10),
-                                              // Start Date & Time
-                                              Row(
-                                                children: [
-                                                  Text("From:", style: kBoldSize18Text),
-                                                  SizedBox(width: 10,),
-                                                  Text("${todo.startDate} ${todo.startTime}", style: kSemiBoldSize18Text),
-                                                ],
-                                              ),
-                                              SizedBox(height: 10),
-                                              // End Date & Time
-                                              Row(
-                                                children: [
-                                                  Text("To:", style: kBoldSize18Text),
-                                                  SizedBox(width: 10,),
-                                                  Text("${todo.endDate} ${todo.endTime}", style: kSemiBoldSize18Text),
-                                                ],
-                                              ),
-                                              SizedBox(height: 10),
-                                              // Status
-                                              Row(
-                                                children: [
-                                                  Text("Status:", style: kBoldSize18Text),
-                                                  SizedBox(width: 10,),
-                                                  Text(todo.status, style: kSemiBoldSize18Text),
-                                                ],
-                                              ),
-                                              SizedBox(height: 10),
-                                              // Priority
-                                              Row(
-                                                children: [
-                                                  Text("Priority:", style: kBoldSize18Text,),
-                                                  SizedBox(width: 10,),
-                                                  Text(
-                                                      todo.priority,
-                                                      style: todo.priority == 'Low' ? kSemiBoldGreenSize18Text : (todo.priority == 'Medium' ? kSemiBoldYellowSize18Text : kSemiBoldRedSize18Text)
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(height: 20),
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                children: [
-                                                  TextButton(
-                                                    style: ButtonStyle(
-                                                        shape: WidgetStateProperty.all(
-                                                            RoundedRectangleBorder(
-                                                                side: const BorderSide(
-                                                                  color: Colors.green,
-                                                                  width: 1,
-                                                                ),
-                                                                borderRadius: BorderRadius.circular(0)
-                                                            )
-                                                        )
+                                                    if (todo.allDay == true) ...[
+                                                      Text("All Day Event", style: kBlueBoldSize20Text),
+                                                    ]
+                                                  ],
+                                                ),
+                                                const Divider(),
+                                                //Description
+                                                Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text("Description:", style: kBoldSize18Text),
+                                                    SizedBox(width: 10,),
+                                                    Flexible(
+                                                      child: Text(todo.description, style: kSemiBoldSize18Text),
+                                                    )
+                                                  ],
+                                                ),
+                                                SizedBox(height: 10),
+                                                // Start Date & Time
+                                                Row(
+                                                  children: [
+                                                    Text("From:", style: kBoldSize18Text),
+                                                    SizedBox(width: 10,),
+                                                    Text("${todo.startDate} ${todo.startTime}", style: kSemiBoldSize18Text),
+                                                  ],
+                                                ),
+                                                SizedBox(height: 10),
+                                                // End Date & Time
+                                                Row(
+                                                  children: [
+                                                    Text("To:", style: kBoldSize18Text),
+                                                    SizedBox(width: 10,),
+                                                    Text("${todo.endDate} ${todo.endTime}", style: kSemiBoldSize18Text),
+                                                  ],
+                                                ),
+                                                SizedBox(height: 10),
+                                                // Status
+                                                Row(
+                                                  children: [
+                                                    Text("Status:", style: kBoldSize18Text),
+                                                    SizedBox(width: 10,),
+                                                    Text(todo.status, style: kSemiBoldSize18Text),
+                                                  ],
+                                                ),
+                                                SizedBox(height: 10),
+                                                // Priority
+                                                Row(
+                                                  children: [
+                                                    Text("Priority:", style: kBoldSize18Text,),
+                                                    SizedBox(width: 10,),
+                                                    Text(
+                                                        todo.priority,
+                                                        style: todo.priority == 'Low' ? kSemiBoldGreenSize18Text : (todo.priority == 'Medium' ? kSemiBoldYellowSize18Text : kSemiBoldRedSize18Text)
                                                     ),
-                                                    onPressed: null,
-                                                    child: const Text('EDIT', style: kSemiBoldGreenSize18Text,),
-                                                  ),
-                                                  TextButton(
-                                                    style: ButtonStyle(
-                                                        shape: WidgetStateProperty.all(
-                                                            RoundedRectangleBorder(
-                                                                side: const BorderSide(
-                                                                  color: Colors.red,
-                                                                  width: 1,
-                                                                ),
-                                                                borderRadius: BorderRadius.circular(0)
-                                                            )
-                                                        )
+                                                  ],
+                                                ),
+                                                SizedBox(height: 20),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                  children: [
+                                                    TextButton(
+                                                      style: ButtonStyle(
+                                                          shape: WidgetStateProperty.all(
+                                                              RoundedRectangleBorder(
+                                                                  side: const BorderSide(
+                                                                    color: Colors.green,
+                                                                    width: 1,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.circular(0)
+                                                              )
+                                                          )
+                                                      ),
+                                                      onPressed: null,
+                                                      child: const Text('EDIT', style: kSemiBoldGreenSize18Text,),
                                                     ),
-                                                    onPressed: (){
-                                                      triggerDeleteListing('WARNING!', 'Are you sure you want to delete this todo?', '${todo.id}');
-                                                    },
-                                                    child: Text('DELETE', style: kRedSize18Text),
-                                                  ),
-                                                ],
-                                              )
-                                            ],
+                                                    TextButton(
+                                                      style: ButtonStyle(
+                                                          shape: WidgetStateProperty.all(
+                                                              RoundedRectangleBorder(
+                                                                  side: const BorderSide(
+                                                                    color: Colors.red,
+                                                                    width: 1,
+                                                                  ),
+                                                                  borderRadius: BorderRadius.circular(0)
+                                                              )
+                                                          )
+                                                      ),
+                                                      onPressed: (){
+                                                        triggerDeleteListing('WARNING!', 'Are you sure you want to delete this todo?', '${todo.id}');
+                                                      },
+                                                      child: Text('DELETE', style: kRedSize18Text),
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    },
+                                        );
+                                      },
+                                    ),
                                   )
                               ),
                             ],
