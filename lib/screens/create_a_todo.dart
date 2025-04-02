@@ -122,6 +122,32 @@ class _CreateATodoState extends State<CreateATodo> {
           actions: [
             TextButton(
               onPressed: () {
+                if (title == "SUCCESS!") {
+                  Navigator.of(context).pop(); // Close the alert dialog
+                  // Navigate to the todo list page after closing the dialog
+                  Navigator.pushNamed(context, '/view_all_todos');
+                } else {
+                  Navigator.of(context).pop(); // Just close the dialog for failure
+                }
+              },
+              child: Text("OK", style: kBlueSize18Text),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  /*void _showAlertDialog(BuildContext context, String title, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog.adaptive(
+          title: Text(title, style: kBlueBoldSize20Text),
+          content: Text(message, style: kBlueSize18Text),
+          actions: [
+            TextButton(
+              onPressed: () {
                 if (title == "Success") {
                   Navigator.of(context).pop();
                   Navigator.pushNamed(context, '/view_all_todos');
@@ -135,13 +161,14 @@ class _CreateATodoState extends State<CreateATodo> {
         );
       },
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<TodoBloc, TodoState>(
       listener: (context, state) {
         if (state is TodoCreatedSuccess) {
+          // Close the alert dialog and navigate after that
           _showAlertDialog(context, "SUCCESS!", "Todo created successfully! You will be redirected to the todo list page.");
         } else if (state is TodoCreationFailure) {
           _showAlertDialog(context, "WARNING!", "Failed to create todo. Please try again.");
