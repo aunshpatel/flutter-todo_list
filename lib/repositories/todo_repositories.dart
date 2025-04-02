@@ -29,5 +29,17 @@ class TodoRepository {
       throw Exception('Failed to create todo');
     }
   }
+
+  Future<bool> deleteTodo(String todoID) async {
+    final response = await http.delete(
+      Uri.parse('$apiLinkConstant/todos/delete/$todoID'),
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 

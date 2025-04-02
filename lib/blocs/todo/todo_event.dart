@@ -29,6 +29,7 @@ class CreateTodoEvent extends TodoEvent {
   CreateTodoEvent({required this.todo});
 }*/
 
+/*
 part of 'todo_bloc.dart';
 
 @immutable
@@ -44,4 +45,31 @@ class CreateTodoEvent extends TodoEvent {
 class UpdateFiltersEvent extends TodoEvent {
   final TodoFilters filters;
   UpdateFiltersEvent(this.filters);
+}
+
+class DeleteTodoEvent extends TodoEvent {
+  final String todoID;
+  DeleteTodoEvent({required this.todoID});
+}
+*/
+
+part of 'todo_bloc.dart';
+
+abstract class TodoEvent {}
+
+class GetTodosEvent extends TodoEvent {}
+
+class CreateTodoEvent extends TodoEvent {
+  final Todo todo;
+  CreateTodoEvent({required this.todo});
+}
+
+class UpdateFiltersEvent extends TodoEvent {
+  final TodoFilters filters;
+  UpdateFiltersEvent(this.filters);
+}
+
+class DeleteTodoEvent extends TodoEvent {
+  final String todoID;
+  DeleteTodoEvent({required this.todoID});
 }
