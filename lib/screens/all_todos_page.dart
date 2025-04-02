@@ -8,6 +8,8 @@ import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
+import '../models/filter_model.dart';
+
 class AllTodosPage extends StatefulWidget {
   const AllTodosPage({super.key});
 
@@ -18,6 +20,7 @@ class AllTodosPage extends StatefulWidget {
 class _AllTodosPageState extends State<AllTodosPage> {
   late TodoBloc _todoBloc;
   bool _isVisible = false;
+  bool _isDeleteHandled = false;
   @override
   void initState() {
     super.initState();
@@ -40,7 +43,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
   }
 
   void _clearFilters() {
-    _todoBloc.add(UpdateFiltersEvent(const TodoFilters()));
+    _todoBloc.add(UpdateFiltersEvent(TodoFilters()));
   }
 
   Future<void> triggerDeleteListing(String title, String bodyText, String todoID) async {
@@ -71,7 +74,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
     );
   }
 
-  _deleteListing(String todoID) async{
+  _deleteListing(String todoID) async {
     BlocProvider.of<TodoBloc>(context).add(DeleteTodoEvent(todoID: todoID));
   }
 
@@ -102,11 +105,13 @@ class _AllTodosPageState extends State<AllTodosPage> {
       body: BlocConsumer<TodoBloc, TodoState>(
         listener: (context, state) {
           if (state is TodoError) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error)));
+            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error)));
             commonAlertBox(context, "WARNING!", state.error);
           }
-          if (state is TodoDeletedSuccess) {
+          if (state is TodoDeletedSuccess && !_isDeleteHandled) {
+            _isDeleteHandled = true;
             commonAlertBox(context, "SUCCESS!", "Todo deleted successfully!");
+            _isDeleteHandled = false;
           }
         },
         builder: (context, state) {

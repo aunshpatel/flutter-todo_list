@@ -3,6 +3,8 @@ import 'package:meta/meta.dart';
 import 'package:todo_list/models/todo_model.dart';
 import 'package:todo_list/repositories/todo_repositories.dart';
 import 'package:intl/intl.dart';
+
+import '../../models/filter_model.dart';
 part 'todo_event.dart';
 part 'todo_state.dart';
 
