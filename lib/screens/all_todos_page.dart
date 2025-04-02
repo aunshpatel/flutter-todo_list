@@ -419,7 +419,7 @@ class _AllTodosPageState extends State<AllTodosPage> {
                               SizedBox(height: 20),
                               RoundedButton(
                                 colour: kThemeBlueColor,
-                                title: 'Click Here To Create New Todo',
+                                title: 'Click To Create A New Todo',
                                 onPress: () {
                                   Navigator.pushReplacementNamed(context, '/create_a_todo');
                                 },
