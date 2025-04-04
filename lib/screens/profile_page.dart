@@ -198,7 +198,6 @@ class _ProfilePageState extends State<ProfilePage> {
     // Listen for profile update state and show alert dialog accordingly
     profileBloc.stream.listen((state) {
       if (state is ProfileUpdateSuccess) {
-        // prefs = await SharedPreferences.getInstance();
         setState(() {
           prefs.setString('email', usernameController.text.trim());
           prefs.setString('name', fullnameController.text.trim());
@@ -317,7 +316,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             const Text("PLEASE NOTE:", style: kRedBoldSize15Text),
                           ],
                         ),
-                        const SizedBox(width: 18), // Add some spacing
+                        const SizedBox(width: 18),
                         Expanded(
                           child: Text(
                             "If the password is empty and 'Update Profile' button is pressed, your password will be empty and you will not be able to login. Please do not forget to type in a password in that scenario.",

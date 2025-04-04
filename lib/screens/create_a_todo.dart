@@ -138,31 +138,6 @@ class _CreateATodoState extends State<CreateATodo> {
     );
   }
 
-  /*void _showAlertDialog(BuildContext context, String title, String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog.adaptive(
-          title: Text(title, style: kBlueBoldSize20Text),
-          content: Text(message, style: kBlueSize18Text),
-          actions: [
-            TextButton(
-              onPressed: () {
-                if (title == "Success") {
-                  Navigator.of(context).pop();
-                  Navigator.pushNamed(context, '/view_all_todos');
-                } else {
-                  Navigator.of(context).pop();
-                }
-              },
-              child: Text("OK", style: kBlueSize18Text),
-            ),
-          ],
-        );
-      },
-    );
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return BlocListener<TodoBloc, TodoState>(

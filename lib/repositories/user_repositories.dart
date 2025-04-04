@@ -7,7 +7,6 @@ class UserRepository{
   Future<Map<String, String>> getUserProfile() async {
     final response = await http.get(Uri.parse('$apiLinkConstant/user/get-user/$currentUserID'));
     if (response.statusCode == 200) {
-      // Assuming the response is a list, we'll grab the first element
       Map<String, dynamic> userProfile = json.decode(response.body);
       if (userProfile.isNotEmpty) {
         return {

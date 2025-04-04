@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_list/blocs/todo/todo_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:todo_list/screens/widgets/consts.dart';
 import 'package:todo_list/screens/widgets/rounded_buttons.dart';
 import 'package:todo_list/screens/widgets/side_drawer.dart';
 import 'package:sticky_headers/sticky_headers.dart';
-
 import '../models/filter_model.dart';
 
 class AllTodosPage extends StatefulWidget {
@@ -29,13 +27,8 @@ class _AllTodosPageState extends State<AllTodosPage> {
   }
 
   Future<void> _refreshData() async {
-    // Simulate network delay
     await Future.delayed(Duration(seconds: 2));
-
-    // Example logic for refreshing data (you can replace this with your actual data fetching logic)
-    setState(() {
-
-    });
+    setState(() { });
   }
 
   void _updateFilter(String key, String value) {
@@ -115,7 +108,6 @@ class _AllTodosPageState extends State<AllTodosPage> {
       body: BlocConsumer<TodoBloc, TodoState>(
         listener: (context, state) {
           if (state is TodoError) {
-            // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error)));
             commonAlertBox(context, "WARNING!", state.error);
           }
           if (state is TodoDeletedSuccess && !_isDeleteHandled) {
@@ -284,17 +276,17 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                                 Row(
                                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                   children: [
-                                                    Expanded( // ✅ Ensures text doesn't overflow and wraps properly
+                                                    Expanded(
                                                       child: Row(
-                                                        crossAxisAlignment: CrossAxisAlignment.start, // ✅ Align text properly if it wraps
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
                                                           Text("${index + 1}) ", style: kBlueBoldSize20Text),
                                                           SizedBox(width: 4),
-                                                          Expanded( // ✅ Allows title to take available space and wrap
+                                                          Expanded(
                                                             child: Text(
                                                               "Title: ${todo.title}",
                                                               style: kBlueBoldSize20Text,
-                                                              softWrap: true, // ✅ Allows text to wrap to the next line
+                                                              softWrap: true,
                                                             ),
                                                           ),
                                                         ],
@@ -351,8 +343,8 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                                     Text("Priority:", style: kBoldSize18Text,),
                                                     SizedBox(width: 10,),
                                                     Text(
-                                                        todo.priority,
-                                                        style: todo.priority == 'Low' ? kSemiBoldGreenSize18Text : (todo.priority == 'Medium' ? kSemiBoldYellowSize18Text : kSemiBoldRedSize18Text)
+                                                      todo.priority,
+                                                      style: todo.priority == 'Low' ? kSemiBoldGreenSize18Text : (todo.priority == 'Medium' ? kSemiBoldYellowSize18Text : kSemiBoldRedSize18Text)
                                                     ),
                                                   ],
                                                 ),
@@ -362,30 +354,30 @@ class _AllTodosPageState extends State<AllTodosPage> {
                                                   children: [
                                                     TextButton(
                                                       style: ButtonStyle(
-                                                          shape: WidgetStateProperty.all(
-                                                              RoundedRectangleBorder(
-                                                                  side: const BorderSide(
-                                                                    color: Colors.green,
-                                                                    width: 1,
-                                                                  ),
-                                                                  borderRadius: BorderRadius.circular(0)
-                                                              )
+                                                        shape: WidgetStateProperty.all(
+                                                          RoundedRectangleBorder(
+                                                            side: const BorderSide(
+                                                              color: Colors.green,
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius: BorderRadius.circular(0)
                                                           )
+                                                        )
                                                       ),
                                                       onPressed: null,
                                                       child: const Text('EDIT', style: kSemiBoldGreenSize18Text,),
                                                     ),
                                                     TextButton(
                                                       style: ButtonStyle(
-                                                          shape: WidgetStateProperty.all(
-                                                              RoundedRectangleBorder(
-                                                                  side: const BorderSide(
-                                                                    color: Colors.red,
-                                                                    width: 1,
-                                                                  ),
-                                                                  borderRadius: BorderRadius.circular(0)
-                                                              )
+                                                        shape: WidgetStateProperty.all(
+                                                          RoundedRectangleBorder(
+                                                            side: const BorderSide(
+                                                              color: Colors.red,
+                                                              width: 1,
+                                                            ),
+                                                            borderRadius: BorderRadius.circular(0)
                                                           )
+                                                        )
                                                       ),
                                                       onPressed: (){
                                                         triggerDeleteListing('WARNING!', 'Are you sure you want to delete this todo?', '${todo.id}');

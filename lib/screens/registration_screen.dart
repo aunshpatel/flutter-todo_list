@@ -109,7 +109,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             TextButton(
               child: const Text('OK', style:kBlueSize18Text),
               onPressed: () {
-                // Navigator.pushNamed(context, '/login_screen');
                 Navigator.pushNamed(context, redirectRoute);
               },
             ),
@@ -193,19 +192,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         child: BlocListener<RegistrationBloc, RegistrationState>(
           listener: (context, state) {
             if (state is RegistrationSuccess) {
-              // Show success message and redirect to Home Page
               _registrationLoginMessage('You have registered successfully! You will now be redirected to the Home Page.', '/home_page');
             }
 
             if (state is RegistrationFailure) {
-              // Show error message and stay on the Registration Page
               _errorMessage('You have failed to register! Please try again.', '/registration_page',);
             }
           },
           child: BlocBuilder<RegistrationBloc, RegistrationState>(
             builder: (context, state) {
               if (state is RegistrationLoading) {
-
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

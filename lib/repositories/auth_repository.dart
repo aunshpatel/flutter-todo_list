@@ -4,7 +4,6 @@ import 'dart:convert';
 import '../screens/widgets/consts.dart';
 
 class AuthRepository {
-  // Register Repository
   Future<void> registerUser({
     required String username,
     required String fullName,
@@ -26,10 +25,8 @@ class AuthRepository {
       );
 
       if (response.statusCode == 201) {
-        // Successful registration
         print('Registration successful');
       } else {
-        // Handle error
         throw Exception('Failed to register user');
       }
     } catch (e) {
@@ -47,7 +44,6 @@ class AuthRepository {
 
 
       if (response.statusCode == 200) {
-        // Assuming success means returning true
         SharedPreferences prefs = await SharedPreferences.getInstance();
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print("responseData['_id']:${responseData['_id']}");
@@ -60,13 +56,11 @@ class AuthRepository {
         prefs.setBool('isLoggedIn', true);
         return true;
       } else {
-        // Handle failed login attempt, returning false
         prefs.setBool('isLoggedIn', false);
         return false;
       }
     } catch (e) {
       print('Login error: $e');
-      // On error, return false to indicate failure
       return false;
     }
   }
